@@ -1,36 +1,43 @@
 cmake_minimum_required(VERSION 3.13)
 
+
 # give a name to the project
-project(ProgMathsS3 LANGUAGES C CXX)
+project(ProgMathsS3)
 
-# files to compile
-add_executable(ProgMathsS3 my_examples/src/main.cpp 
-			         libRatio/src/Ratio.cpp
-			         my_examples/src/test1.cpp
+# display VERBOSE messages : cmake --log-level=VERBOSE ..
 
-			         libRatio/include/Ratio.hpp
-			         my_examples/include/test1.hpp)
+# specify the system
+message(VERBOSE "CMAKE_VERSION           : " ${CMAKE_VERSION})
+message(VERBOSE "CMAKE_SYSTEM_NAME       : " ${CMAKE_SYSTEM_NAME})
+message(VERBOSE "CMAKE_SYSTEM            : " ${CMAKE_SYSTEM})
+message(VERBOSE "CMAKE_SYSTEM_PROCESSOR  : " ${CMAKE_SYSTEM_PROCESSOR} "\n")
 
-# specify the include dir
-target_include_directories(ProgMathsS3 PRIVATE "include")
+# specify the directories
+message(VERBOSE "CMAKE_BINARY_DIR        : " ${CMAKE_BINARY_DIR})
+message(VERBOSE "CMAKE_SOURCE_DIR        : " ${CMAKE_SOURCE_DIR})
+message(VERBOSE "CMAKE_HOME_DIRECTORY    : " ${CMAKE_HOME_DIRECTORY})
+message(VERBOSE "PROJECT_BINARY_DIR      : " ${PROJECT_BINARY_DIR})
+message(VERBOSE "PROJECT_SOURCE_DIR      : " ${PROJECT_SOURCE_DIR} "\n")
 
-# vscode can't work fine without
+# compile flags
+message(VERBOSE "CMAKE_CXX_FLAGS         : " ${CMAKE_CXX_FLAG})
+message(VERBOSE "CMAKE_CXX_FLAGS_DEBUG   : " ${CMAKE_CXX_FLAGS_DEBUG})
+message(VERBOSE "CMAKE_CXX_FLAGS_RELEASE : " ${CMAKE_CXX_FLAGS_RELEASE})
+message(VERBOSE "CMAKE_CXX_COMPILER      : " ${CMAKE_CXX_COMPILER} "\n")
+
+
+# not clear to me, but vscode can't work fine without
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# (optional) add a "output" directory in the project binary directory
-file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output)
+# Prevents compiler-specific extensions to C++ because they might allow code to compile on your machine but not on other people's machine
+#set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
 
-# (optional) put the binary files in this directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
-# add my_examples
-message(STATUS "my_examples cmake part ..." )
-add_subdirectory(my_examples)
+# add libRatio
+message(STATUS "libRatio cmake part ..." )
+add_subdirectory(libRatio INTERFACE)
+include_directories(${CMAKE_SOURCE_DIR}/libRatio/include) # important : other projects called by this cmake will know this include directory
 
-# compilation options
-target_compile_features(ProgMathsS3 PRIVATE cxx_std_17) # use at least c++ 17
-if (MSVC)
-    target_compile_options(ProgMathsS3 PRIVATE /W3)
-else()
-    target_compile_options(ProgMathsS3 PRIVATE -Wall -Wextra -Wpedantic -pedantic-errors)
-endif()
+# add myExamples
+message(STATUS "myExamples cmake part ..." )
+add_subdirectory(myExamples)
