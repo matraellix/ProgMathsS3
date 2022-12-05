@@ -30,6 +30,17 @@ int main()
 
     Ratio mult = b * c;
     std::cout << mult << std::endl;
-    
+
+    Ratio e(1,2); 
+    Ratio f(3,4);
+    std::cout << " e : " << e << " f : " << f << std::endl;
+    std::cout << (e == f) << std::endl;
+    std::cout << (e > f) << std::endl;
+    std::cout << (e < f) << std::endl;
+    std::cout << (e >= f) << std::endl;
+    std::cout << (e <= f) << std::endl;
+    Ratio g(-1.5);
+    std::cout << "g = "<< g << std::endl;
+    std::cout << "abs(g) = "<< g.abs(g) << std::endl;
     return 0;
 }

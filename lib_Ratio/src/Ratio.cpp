@@ -11,34 +11,30 @@ Ratio::Ratio(const int &num, const int &denom){
     m_denom = denom/gcd;  
 }
 
+Ratio Ratio::inverse(const Ratio &r) {
+    return Ratio(r.m_denom, r.m_num);
+}
 
 Ratio::Ratio(const double &real){
     const int nb_iter = 3;
-    std::cout << "je passe"  << std::endl;
-    convert_float_to_ratio(real, nb_iter);
+    *this = convert_float_to_ratio(real, nb_iter);
 }
     
-//don't work
 Ratio Ratio::convert_float_to_ratio(const double &real, int nb_iter){
 
-    Ratio sum;
     if (real == 0){
-        return sum;
+        return Ratio(0,1);
     }
     if (nb_iter == 0){
-        return sum;
+        return Ratio(0,1);
     }
-    if (real > 1 || real < -1){
-        sum = convert_float_to_ratio(1/real, nb_iter);
-        return sum;
+    if (real > -1 && real < 1){
+        return inverse(convert_float_to_ratio(1/real, nb_iter));
     }
-    if (real >=1 || real <= -1){
+    if (real >= 1 || real <= -1){
         const int q = (int)real;
-        sum.m_num += q;
-        sum.m_denom += 1;
-        return sum + convert_float_to_ratio(real - q, nb_iter-1);
+        return Ratio(q,1) + convert_float_to_ratio(real - q, nb_iter-1);
     }
-    return sum;
 }
 
 /*******OPERATORS*******/
@@ -80,9 +76,28 @@ Ratio & Ratio::operator=(const Ratio &r) {
     return *this;
 }
 
-Ratio Ratio::abs(const Ratio &r) {
-    //a voir si on check que le num + tard
-    return (r.m_num < 0 || r.m_denom < 0) ? -r : r;
+bool Ratio::operator==(const Ratio &r){
+    return (m_num * r.m_denom) == (r.m_num * m_denom);
+}
+
+bool Ratio::operator!=(const Ratio &r){
+    return !((m_num * r.m_denom) == (r.m_num * m_denom));
+}
+
+bool Ratio::operator>(const Ratio &r){
+    return (m_num * r.m_denom) > (r.m_num * m_denom);
+}
+
+bool Ratio::operator<(const Ratio &r){
+    return (m_num * r.m_denom) < (r.m_num * m_denom);
+}
+
+bool Ratio::operator>=(const Ratio &r){
+    return !(*this < r);
+}
+
+bool Ratio::operator<=(const Ratio &r){
+    return !(*this > r);
 }
 
 std::ostream& operator<< (std::ostream& stream, const Ratio& r){
@@ -90,6 +105,11 @@ std::ostream& operator<< (std::ostream& stream, const Ratio& r){
 	return stream;
 }
 
+
+Ratio Ratio::abs(const Ratio &r) {
+    //a voir si on check que le num + tard
+    return (r.m_num < 0 || r.m_denom < 0) ? -r : r;
+}
 
 int Ratio::get_num() const{
     return m_num;
