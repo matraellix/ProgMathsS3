@@ -1,27 +1,17 @@
 [
 {
-  "directory": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build",
-  "command": "/usr/bin/c++   -I/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/include    -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/ProgMathsS3.dir/my_examples/src/main.cpp.o -c /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/main.cpp",
-  "file": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/main.cpp"
-},
-{
-  "directory": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build",
-  "command": "/usr/bin/c++   -I/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/include    -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/ProgMathsS3.dir/libRatio/src/Ratio.cpp.o -c /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/libRatio/src/Ratio.cpp",
-  "file": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/libRatio/src/Ratio.cpp"
-},
-{
-  "directory": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build",
-  "command": "/usr/bin/c++   -I/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/include    -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/ProgMathsS3.dir/my_examples/src/test1.cpp.o -c /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/test1.cpp",
-  "file": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/test1.cpp"
+  "directory": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build/INTERFACE",
+  "command": "/usr/bin/g++   -I/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/lib_Ratio/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/Ratio.dir/src/Ratio.cpp.o -c /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/lib_Ratio/src/Ratio.cpp",
+  "file": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/lib_Ratio/src/Ratio.cpp"
 },
 {
   "directory": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build/my_examples",
-  "command": "/usr/bin/c++   -I/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/include    -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/My_Examples.dir/src/main.cpp.o -c /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/main.cpp",
+  "command": "/usr/bin/g++   -I/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/lib_Ratio/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/MyExamples.dir/src/main.cpp.o -c /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/main.cpp",
   "file": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/main.cpp"
 },
 {
   "directory": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build/my_examples",
-  "command": "/usr/bin/c++   -I/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/include    -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/My_Examples.dir/src/test1.cpp.o -c /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/test1.cpp",
+  "command": "/usr/bin/g++   -I/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/lib_Ratio/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -std=gnu++17 -o CMakeFiles/MyExamples.dir/src/test1.cpp.o -c /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/test1.cpp",
   "file": "/home/matraellix/Documents/ProgMathsS3/ProgMathsS3/my_examples/src/test1.cpp"
 }
 ]

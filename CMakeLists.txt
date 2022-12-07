@@ -34,10 +34,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
 # add libRatio
-message(STATUS "libRatio cmake part ..." )
-add_subdirectory(libRatio INTERFACE)
+message(STATUS "lib_Ratio cmake part ..." )
+add_subdirectory(lib_Ratio INTERFACE)
 include_directories(${CMAKE_SOURCE_DIR}/lib_Ratio/include) # important : other projects called by this cmake will know this include directory
 
 # add myExamples
-message(STATUS "myExamples cmake part ..." )
-add_subdirectory(myExamples)
+message(STATUS "my_examples cmake part ..." )
+add_subdirectory(my_examples)

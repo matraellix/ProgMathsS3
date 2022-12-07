@@ -111,111 +111,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ProgMathsS3
+# Target rules for targets named Ratio
 
 # Build rule for target.
-ProgMathsS3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ProgMathsS3
-.PHONY : ProgMathsS3
+Ratio: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Ratio
+.PHONY : Ratio
 
 # fast build rule for target.
-ProgMathsS3/fast:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/build
-.PHONY : ProgMathsS3/fast
+Ratio/fast:
+	$(MAKE) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/build
+.PHONY : Ratio/fast
 
 #=============================================================================
-# Target rules for targets named My_Examples
+# Target rules for targets named MyExamples
 
 # Build rule for target.
-My_Examples: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 My_Examples
-.PHONY : My_Examples
+MyExamples: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 MyExamples
+.PHONY : MyExamples
 
 # fast build rule for target.
-My_Examples/fast:
-	$(MAKE) -f my_examples/CMakeFiles/My_Examples.dir/build.make my_examples/CMakeFiles/My_Examples.dir/build
-.PHONY : My_Examples/fast
-
-libRatio/src/Ratio.o: libRatio/src/Ratio.cpp.o
-
-.PHONY : libRatio/src/Ratio.o
-
-# target to build an object file
-libRatio/src/Ratio.cpp.o:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/libRatio/src/Ratio.cpp.o
-.PHONY : libRatio/src/Ratio.cpp.o
-
-libRatio/src/Ratio.i: libRatio/src/Ratio.cpp.i
-
-.PHONY : libRatio/src/Ratio.i
-
-# target to preprocess a source file
-libRatio/src/Ratio.cpp.i:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/libRatio/src/Ratio.cpp.i
-.PHONY : libRatio/src/Ratio.cpp.i
-
-libRatio/src/Ratio.s: libRatio/src/Ratio.cpp.s
-
-.PHONY : libRatio/src/Ratio.s
-
-# target to generate assembly for a file
-libRatio/src/Ratio.cpp.s:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/libRatio/src/Ratio.cpp.s
-.PHONY : libRatio/src/Ratio.cpp.s
-
-my_examples/src/main.o: my_examples/src/main.cpp.o
-
-.PHONY : my_examples/src/main.o
-
-# target to build an object file
-my_examples/src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/my_examples/src/main.cpp.o
-.PHONY : my_examples/src/main.cpp.o
-
-my_examples/src/main.i: my_examples/src/main.cpp.i
-
-.PHONY : my_examples/src/main.i
-
-# target to preprocess a source file
-my_examples/src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/my_examples/src/main.cpp.i
-.PHONY : my_examples/src/main.cpp.i
-
-my_examples/src/main.s: my_examples/src/main.cpp.s
-
-.PHONY : my_examples/src/main.s
-
-# target to generate assembly for a file
-my_examples/src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/my_examples/src/main.cpp.s
-.PHONY : my_examples/src/main.cpp.s
-
-my_examples/src/test1.o: my_examples/src/test1.cpp.o
-
-.PHONY : my_examples/src/test1.o
-
-# target to build an object file
-my_examples/src/test1.cpp.o:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/my_examples/src/test1.cpp.o
-.PHONY : my_examples/src/test1.cpp.o
-
-my_examples/src/test1.i: my_examples/src/test1.cpp.i
-
-.PHONY : my_examples/src/test1.i
-
-# target to preprocess a source file
-my_examples/src/test1.cpp.i:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/my_examples/src/test1.cpp.i
-.PHONY : my_examples/src/test1.cpp.i
-
-my_examples/src/test1.s: my_examples/src/test1.cpp.s
-
-.PHONY : my_examples/src/test1.s
-
-# target to generate assembly for a file
-my_examples/src/test1.cpp.s:
-	$(MAKE) -f CMakeFiles/ProgMathsS3.dir/build.make CMakeFiles/ProgMathsS3.dir/my_examples/src/test1.cpp.s
-.PHONY : my_examples/src/test1.cpp.s
+MyExamples/fast:
+	$(MAKE) -f my_examples/CMakeFiles/MyExamples.dir/build.make my_examples/CMakeFiles/MyExamples.dir/build
+.PHONY : MyExamples/fast
 
 # Help Target
 help:
@@ -225,17 +144,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ProgMathsS3"
-	@echo "... My_Examples"
-	@echo "... libRatio/src/Ratio.o"
-	@echo "... libRatio/src/Ratio.i"
-	@echo "... libRatio/src/Ratio.s"
-	@echo "... my_examples/src/main.o"
-	@echo "... my_examples/src/main.i"
-	@echo "... my_examples/src/main.s"
-	@echo "... my_examples/src/test1.o"
-	@echo "... my_examples/src/test1.i"
-	@echo "... my_examples/src/test1.s"
+	@echo "... Ratio"
+	@echo "... MyExamples"
 .PHONY : help
 
 

@@ -11,6 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
+  "../lib_Ratio/CMakeLists.txt"
   "../my_examples/CMakeLists.txt"
   "/usr/share/cmake-3.16/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
@@ -42,11 +43,12 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "INTERFACE/CMakeFiles/CMakeDirectoryInformation.cmake"
   "my_examples/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/ProgMathsS3.dir/DependInfo.cmake"
-  "my_examples/CMakeFiles/My_Examples.dir/DependInfo.cmake"
+  "INTERFACE/CMakeFiles/Ratio.dir/DependInfo.cmake"
+  "my_examples/CMakeFiles/MyExamples.dir/DependInfo.cmake"
   )
