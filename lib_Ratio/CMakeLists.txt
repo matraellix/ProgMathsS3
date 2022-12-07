@@ -7,6 +7,9 @@ project(Ratio LANGUAGES C CXX)
 file(GLOB_RECURSE source_files src/*.cpp)
 file(GLOB_RECURSE header_files include/*.hpp)
 
+message("youpi")
+message(${header_files})
+
 # Instructions to compile a library (no main() inside)
 # default STATIC ??
 # SHARED to make a .so instead of a .a
