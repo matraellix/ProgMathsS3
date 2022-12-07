@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,19 +111,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-my_examples/CMakeFiles/My_Examples.dir/rule:
-	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f CMakeFiles/Makefile2 my_examples/CMakeFiles/My_Examples.dir/rule
-.PHONY : my_examples/CMakeFiles/My_Examples.dir/rule
+my_examples/CMakeFiles/MyExamples.dir/rule:
+	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f CMakeFiles/Makefile2 my_examples/CMakeFiles/MyExamples.dir/rule
+.PHONY : my_examples/CMakeFiles/MyExamples.dir/rule
 
 # Convenience name for target.
-My_Examples: my_examples/CMakeFiles/My_Examples.dir/rule
+MyExamples: my_examples/CMakeFiles/MyExamples.dir/rule
 
-.PHONY : My_Examples
+.PHONY : MyExamples
 
 # fast build rule for target.
-My_Examples/fast:
-	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/My_Examples.dir/build.make my_examples/CMakeFiles/My_Examples.dir/build
-.PHONY : My_Examples/fast
+MyExamples/fast:
+	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/MyExamples.dir/build.make my_examples/CMakeFiles/MyExamples.dir/build
+.PHONY : MyExamples/fast
 
 src/main.o: src/main.cpp.o
 
@@ -131,7 +131,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/My_Examples.dir/build.make my_examples/CMakeFiles/My_Examples.dir/src/main.cpp.o
+	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/MyExamples.dir/build.make my_examples/CMakeFiles/MyExamples.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -140,7 +140,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/My_Examples.dir/build.make my_examples/CMakeFiles/My_Examples.dir/src/main.cpp.i
+	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/MyExamples.dir/build.make my_examples/CMakeFiles/MyExamples.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -149,7 +149,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/My_Examples.dir/build.make my_examples/CMakeFiles/My_Examples.dir/src/main.cpp.s
+	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/MyExamples.dir/build.make my_examples/CMakeFiles/MyExamples.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/test1.o: src/test1.cpp.o
@@ -158,7 +158,7 @@ src/test1.o: src/test1.cpp.o
 
 # target to build an object file
 src/test1.cpp.o:
-	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/My_Examples.dir/build.make my_examples/CMakeFiles/My_Examples.dir/src/test1.cpp.o
+	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/MyExamples.dir/build.make my_examples/CMakeFiles/MyExamples.dir/src/test1.cpp.o
 .PHONY : src/test1.cpp.o
 
 src/test1.i: src/test1.cpp.i
@@ -167,7 +167,7 @@ src/test1.i: src/test1.cpp.i
 
 # target to preprocess a source file
 src/test1.cpp.i:
-	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/My_Examples.dir/build.make my_examples/CMakeFiles/My_Examples.dir/src/test1.cpp.i
+	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/MyExamples.dir/build.make my_examples/CMakeFiles/MyExamples.dir/src/test1.cpp.i
 .PHONY : src/test1.cpp.i
 
 src/test1.s: src/test1.cpp.s
@@ -176,7 +176,7 @@ src/test1.s: src/test1.cpp.s
 
 # target to generate assembly for a file
 src/test1.cpp.s:
-	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/My_Examples.dir/build.make my_examples/CMakeFiles/My_Examples.dir/src/test1.cpp.s
+	cd /home/matraellix/Documents/ProgMathsS3/ProgMathsS3/build && $(MAKE) -f my_examples/CMakeFiles/MyExamples.dir/build.make my_examples/CMakeFiles/MyExamples.dir/src/test1.cpp.s
 .PHONY : src/test1.cpp.s
 
 # Help Target
@@ -185,9 +185,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... My_Examples"
+	@echo "... rebuild_cache"
+	@echo "... MyExamples"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
