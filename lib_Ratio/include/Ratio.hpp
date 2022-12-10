@@ -25,7 +25,18 @@ class Ratio {
     Ratio operator-() const;
     Ratio operator/(const Ratio &r) const;
     Ratio operator*(const Ratio &r) const;
+    //assignment operators
     Ratio & operator=(const Ratio &r);
+    Ratio & operator+=(const Ratio &r);
+    Ratio & operator-=(const Ratio &r);
+    Ratio & operator*=(const Ratio &r);
+    Ratio & operator/=(const Ratio &r);
+    //prefix increment and decrement operators
+    Ratio & operator++();
+    Ratio & operator--();
+    //postfix increment and decrement operators
+    Ratio operator++(int);
+    Ratio operator--(int);
     bool operator==(const Ratio &r);
     bool operator!=(const Ratio &r);
     bool operator>=(const Ratio &r);

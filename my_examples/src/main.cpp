@@ -42,5 +42,23 @@ int main()
     Ratio g(-1.5);
     std::cout << "g = "<< g << std::endl;
     std::cout << "abs(g) = "<< g.abs(g) << std::endl;
+
+    // test for increment and decrement operators
+    Ratio h(3,2); 
+    std::cout << "h : "<< h << std::endl;
+    std::cout << "++h : "<< ++h << std::endl;   
+    std::cout << "h++ : "<< h++ << std::endl;
+    std::cout << "--h : "<< --h << std::endl;
+    std::cout << "h-- : "<< h-- << std::endl;
+    
+    Ratio i(5,2); 
+    h+=i;
+    std::cout << "+= operator :"<< h << std::endl;
+    h-=i;
+    std::cout << "-= operator :"<< h << std::endl;
+    h*=i;
+    std::cout << "*= operator :"<< h << std::endl;
+    h/=i;
+    std::cout << "/= operator :"<< h << std::endl;
     return 0;
 }

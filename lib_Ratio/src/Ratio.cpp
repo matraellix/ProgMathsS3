@@ -40,6 +40,12 @@ Ratio Ratio::convert_float_to_ratio(const double &real, int nb_iter){
 /*******OPERATORS*******/
 //NE MARCHE PAS A FAIRE POUR EVITER LA DUPLICATION DE CODE GCD
 Ratio Ratio::reduce_frac(const Ratio &r){
+    //cas -num/-denom ou num/-denom -> (r.m_num < 0 && r.mdenom<0) || (r.m_num > 0 && r.mdenom<0) -> r.mdenom<0
+    /*
+    if(r.mdenom<0){
+        r.m_num *= -1;
+        r.m_denom *= -1;
+    }*/
     int num = 0, denom = 1;
     int gcd = std::gcd(r.m_num, r.m_denom);
     num /= gcd;
@@ -99,6 +105,45 @@ bool Ratio::operator>=(const Ratio &r){
 bool Ratio::operator<=(const Ratio &r){
     return !(*this > r);
 }
+
+Ratio & Ratio::operator++(){
+    m_num += m_denom;
+    return *this;
+}
+
+Ratio & Ratio::operator--(){
+    m_num -= m_denom;
+    return *this;
+}
+
+Ratio Ratio::operator++(int){ 
+
+    return ++*this;
+}
+
+Ratio Ratio::operator--(int){
+    return --*this;
+}
+
+Ratio & Ratio::operator+=(const Ratio &r) {
+    *this = *this + r;
+    return *this;
+}
+
+Ratio & Ratio::operator-=(const Ratio &r) {
+    *this = *this - r;
+    return *this;
+}
+Ratio & Ratio::operator*=(const Ratio &r) {
+    *this = *this * r;
+    return *this;
+}
+
+Ratio & Ratio::operator/=(const Ratio &r) {
+    *this = *this / r;
+    return *this;
+}
+
 
 std::ostream& operator<< (std::ostream& stream, const Ratio& r){
 	stream << r.get_num() << "/" << r.get_denom();
