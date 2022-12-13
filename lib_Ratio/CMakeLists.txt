@@ -7,8 +7,13 @@ project(Ratio LANGUAGES C CXX)
 file(GLOB_RECURSE source_files src/*.cpp)
 file(GLOB_RECURSE header_files include/*.hpp)
 
-message("youpi")
-message(${header_files})
+# call the CMakeLists.txt to make the documentation (Doxygen)
+find_package(Doxygen OPTIONAL_COMPONENTS QUIET)
+if(DOXYGEN_FOUND)
+	add_subdirectory(doc)
+else()
+	message(WARNING "Doxygen not found, skip dococumentation")
+endif()
 
 # Instructions to compile a library (no main() inside)
 # default STATIC ??
