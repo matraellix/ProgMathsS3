@@ -39,19 +39,15 @@ Ratio Ratio::convert_float_to_ratio(const double &real, int nb_iter){
 
 /*******OPERATORS*******/
 //NE MARCHE PAS A FAIRE POUR EVITER LA DUPLICATION DE CODE GCD
-Ratio Ratio::reduce_frac(const Ratio &r){
-    //cas -num/-denom ou num/-denom -> (r.m_num < 0 && r.mdenom<0) || (r.m_num > 0 && r.mdenom<0) -> r.mdenom<0
-    /*
-    if(r.mdenom<0){
-        r.m_num *= -1;
-        r.m_denom *= -1;
-    }*/
-    int num = 0, denom = 1;
-    int gcd = std::gcd(r.m_num, r.m_denom);
-    num /= gcd;
-    denom /= gcd;   
-    Ratio new_r(num, denom);
-    return new_r;
+void Ratio::reduce_frac(){
+    //cas -num/-denom ou num/-denom -> (r.m_num < 0 && r.mdenom<0) || (r.m_num > 0 && r.mdenom<0) -> r.mdenom<0    
+    int gcd = std::gcd(m_num, m_denom);
+    m_num /= gcd;
+    m_denom /= gcd;  
+    if(m_denom < 0){
+        m_num *= -1;
+        m_denom *= -1;
+    } 
 }
 
 Ratio Ratio::operator+(const Ratio &r) const {
@@ -73,6 +69,23 @@ Ratio Ratio::operator/(const Ratio &r) const {
 
 Ratio Ratio::operator*(const Ratio &r) const {
     return Ratio((m_num * r.m_num), (m_denom * r.m_denom)); 
+}
+
+
+Ratio Ratio::operator*(const float &f) const {
+    Ratio new_rf;
+    new_rf = new_rf.convert_float_to_ratio(f,10);
+    new_rf.m_num *= m_num ;
+    new_rf.m_denom *= m_denom ;
+    new_rf.reduce_frac();
+    return new_rf; 
+}
+
+
+Ratio Ratio::operator*(const int &i) const {
+    Ratio new_r ((m_num * i), (m_denom));
+    new_r.reduce_frac();
+    return new_r; 
 }
 
 Ratio & Ratio::operator=(const Ratio &r) {
@@ -166,5 +179,15 @@ int Ratio::get_num() const{
 }
 
 int Ratio::get_denom() const{
+    return m_denom;
+}
+
+int Ratio::set_num(int num){
+    m_num = num;
+    return m_num;
+}
+
+int Ratio::set_denom(int denom){
+    m_denom = denom;
     return m_denom;
 }

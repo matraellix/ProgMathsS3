@@ -6,9 +6,9 @@ int main()
     Ratio b(10,4); 
     std::cout << b << std::endl;
     b = -b;
-    std::cout << b << std::endl;
+    std::cout << "- unaire : " << b << std::endl;
     
-    std::cout << b.abs(b) << std::endl;
+    std::cout <<"abs : "<< b.abs(b) << std::endl;
     std::cout << b << std::endl;
     Ratio c(30,4); 
     std::cout << c << std::endl;
@@ -17,19 +17,19 @@ int main()
     std::cout << d << std::endl;
 
     Ratio sum = b + c;
-    std::cout << sum << std::endl;
+    std::cout << " sum : " << sum << std::endl;
 
     Ratio sub = b - c;
-    std::cout << sub << std::endl;
+    std::cout << " sub : " << sub << std::endl;
   
     Ratio sub2 = c - b;
-    std::cout << sub2 << std::endl;
+    std::cout << " sub2 : " <<  sub2 << std::endl;
 
     Ratio div = b / c;
-    std::cout << div << std::endl;
+    std::cout << " div : " <<  div << std::endl;
 
     Ratio mult = b * c;
-    std::cout << mult << std::endl;
+    std::cout << " mult : " <<  mult << std::endl;
 
     Ratio e(1,2); 
     Ratio f(3,4);
@@ -60,5 +60,20 @@ int main()
     std::cout << "*= operator :"<< h << std::endl;
     h/=i;
     std::cout << "/= operator :"<< h << std::endl;
+
+    //test setter
+    i.set_num(7);
+    std::cout << i << std::endl;
+    i.set_num(6);
+    std::cout << i << std::endl;
+
+
+    Ratio k(1,2);
+    Ratio l(4,1);
+    float fl = 2.5;
+    std::cout << k*fl << std::endl;
+
+    std::cout << k*l << std::endl;
+
     return 0;
 }

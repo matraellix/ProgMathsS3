@@ -65,6 +65,8 @@ class Ratio {
     Ratio operator-() const;
     Ratio operator/(const Ratio &r) const;
     Ratio operator*(const Ratio &r) const;
+    Ratio operator*(const float &f) const;
+    Ratio operator*(const int &i) const;
     /// \brief assignment operators
     Ratio & operator=(const Ratio &r);
     Ratio & operator+=(const Ratio &r);
@@ -93,9 +95,13 @@ class Ratio {
     int get_num() const;
     int get_denom() const; 
 
-    Ratio reduce_frac(const Ratio &r);
-    Ratio reduce_frac(const int &num, const int &denom);
+    int set_num(int num);
+    int set_denom(int denom);
+
+    void reduce_frac();
+    //Ratio reduce_frac(const int &num, const int &denom);
 
 };
 
+    
     std::ostream& operator<< (std::ostream& stream, const Ratio& r);
