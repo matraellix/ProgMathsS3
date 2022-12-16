@@ -59,24 +59,26 @@ class Ratio {
     /// \brief return the rational number from a real
     Ratio convert_float_to_ratio(const double &real, int nb_iter);
 
-    //operators
+    /// \brief arithmetic operators
     Ratio operator+(const Ratio &r) const;
     Ratio operator-(const Ratio &r) const;
     Ratio operator-() const;
     Ratio operator/(const Ratio &r) const;
     Ratio operator*(const Ratio &r) const;
-    //assignment operators
+    /// \brief assignment operators
     Ratio & operator=(const Ratio &r);
     Ratio & operator+=(const Ratio &r);
     Ratio & operator-=(const Ratio &r);
     Ratio & operator*=(const Ratio &r);
     Ratio & operator/=(const Ratio &r);
-    //prefix increment and decrement operators
+    /// \brief prefix increment and decrement operators
     Ratio & operator++();
     Ratio & operator--();
-    //postfix increment and decrement operators
+    /// \brief postfix increment and decrement operators
     Ratio operator++(int);
     Ratio operator--(int);
+
+    /// \brief comparison operators
     bool operator==(const Ratio &r);
     bool operator!=(const Ratio &r);
     bool operator>=(const Ratio &r);
@@ -84,8 +86,10 @@ class Ratio {
     bool operator>(const Ratio &r);
     bool operator<(const Ratio &r);
     
+    /// \brief methods
     Ratio inverse(const Ratio &r);
     Ratio abs(const Ratio &r);
+    //Ratio squareRoot(const Ratio &r);
     int get_num() const;
     int get_denom() const; 
 

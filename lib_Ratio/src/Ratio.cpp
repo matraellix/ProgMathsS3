@@ -156,6 +156,11 @@ Ratio Ratio::abs(const Ratio &r) {
     return (r.m_num < 0 || r.m_denom < 0) ? -r : r;
 }
 
+/*
+Ratio Ratio::squareRoot(const Ratio &r){
+    m_num = sqrt(r.m_num);
+}*/
+
 int Ratio::get_num() const{
     return m_num;
 }
