@@ -176,18 +176,20 @@ Ratio Ratio::abs() {
     return (m_num < 0) ? Ratio(-m_num, m_denom) : Ratio(m_num, m_denom);
 }
 
-/*
+
 Ratio Ratio::squareRoot(){
     float m_numSQRT = sqrt(m_num);
     float m_denomSQRT = sqrt(m_denom);
     Ratio new_rNum;
     new_rNum = new_rNum.convert_float_to_ratio(m_numSQRT,10);
     Ratio new_rDenom;
-    new_rDenom = new_rDenom.convert_float_to_ratio(m_numSQRT,10);
+    new_rDenom = new_rDenom.convert_float_to_ratio(m_denomSQRT,10);
     new_rDenom = inverse(new_rDenom);
-    new_rDenom *= new_rNum;
-    return new_rDenom;
-}*/
+    Ratio new_r;
+    new_r = new_rDenom*new_rNum;
+    new_r.reduce_frac();
+    return new_r;
+}
 
 int Ratio::get_num() const{
     return m_num;

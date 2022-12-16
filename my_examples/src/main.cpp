@@ -76,7 +76,9 @@ int main()
     std::cout << k*l << std::endl;
 
     Ratio j(3,4);
-    //std::cout << "sqrt : " << j.squareRoot() << std::endl;
+    Ratio m(1,2);
+    std::cout << "sqrt j: " << j.squareRoot() << std::endl;
+    std::cout << "sqrt m: " << m.squareRoot() << std::endl;
 
     return 0;
 }

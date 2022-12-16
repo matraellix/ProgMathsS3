@@ -91,7 +91,7 @@ class Ratio {
     /// \brief methods
     Ratio inverse(const Ratio &r);
     Ratio abs();
-    //Ratio squareRoot();
+    Ratio squareRoot();
     int get_num() const;
     int get_denom() const; 
 
