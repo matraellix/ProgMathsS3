@@ -90,13 +90,15 @@ class Ratio {
     
     /// \brief methods
     Ratio inverse(const Ratio &r);
-    Ratio abs(const Ratio &r);
-    //Ratio squareRoot(const Ratio &r);
+    Ratio abs();
+    //Ratio squareRoot();
     int get_num() const;
     int get_denom() const; 
 
     int set_num(int num);
     int set_denom(int denom);
+
+    void denom_positif();
 
     void reduce_frac();
     //Ratio reduce_frac(const int &num, const int &denom);

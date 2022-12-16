@@ -7,8 +7,8 @@ int main()
     std::cout << b << std::endl;
     b = -b;
     std::cout << "- unaire : " << b << std::endl;
-    
-    std::cout <<"abs : "<< b.abs(b) << std::endl;
+    Ratio z(-2,-3);
+    std::cout <<"abs : "<< z.abs() << std::endl;
     std::cout << b << std::endl;
     Ratio c(30,4); 
     std::cout << c << std::endl;
@@ -41,7 +41,7 @@ int main()
     std::cout << (e <= f) << std::endl;
     Ratio g(-1.5);
     std::cout << "g = "<< g << std::endl;
-    std::cout << "abs(g) = "<< g.abs(g) << std::endl;
+    std::cout << "g.abs() = "<< g.abs() << std::endl;
 
     // test for increment and decrement operators
     Ratio h(3,2); 
@@ -74,6 +74,9 @@ int main()
     std::cout << k*fl << std::endl;
 
     std::cout << k*l << std::endl;
+
+    Ratio j(3,4);
+    std::cout << "sqrt : " << j.squareRoot() << std::endl;
 
     return 0;
 }

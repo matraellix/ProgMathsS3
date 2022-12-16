@@ -1,5 +1,6 @@
 #include <iostream>
 #include <numeric>
+#include <cmath>
 #include "Ratio.hpp"
 
 
@@ -32,8 +33,15 @@ Ratio Ratio::convert_float_to_ratio(const double &real, int nb_iter){
         return inverse(convert_float_to_ratio(1/real, nb_iter));
     }
     if (real >= 1 || real <= -1){
-        const int q = (int)real;
+        const int q = static_cast<int>(real);
         return Ratio(q,1) + convert_float_to_ratio(real - q, nb_iter-1);
+    }
+}
+
+void Ratio::denom_positif(){
+    if(m_denom < 0){
+        m_num *= -1;
+        m_denom *= -1;
     }
 }
 
@@ -44,11 +52,9 @@ void Ratio::reduce_frac(){
     int gcd = std::gcd(m_num, m_denom);
     m_num /= gcd;
     m_denom /= gcd;  
-    if(m_denom < 0){
-        m_num *= -1;
-        m_denom *= -1;
-    } 
+    (*this).denom_positif();
 }
+
 
 Ratio Ratio::operator+(const Ratio &r) const {
     return Ratio((m_num * r.m_denom) + (m_denom * r.m_num), (m_denom * r.m_denom)); 
@@ -164,14 +170,23 @@ std::ostream& operator<< (std::ostream& stream, const Ratio& r){
 }
 
 
-Ratio Ratio::abs(const Ratio &r) {
+Ratio Ratio::abs() {
     //a voir si on check que le num + tard
-    return (r.m_num < 0 || r.m_denom < 0) ? -r : r;
+    (*this).denom_positif();
+    return (m_num < 0) ? Ratio(-m_num, m_denom) : Ratio(m_num, m_denom);
 }
 
 /*
-Ratio Ratio::squareRoot(const Ratio &r){
-    m_num = sqrt(r.m_num);
+Ratio Ratio::squareRoot(){
+    float m_numSQRT = sqrt(m_num);
+    float m_denomSQRT = sqrt(m_denom);
+    Ratio new_rNum;
+    new_rNum = new_rNum.convert_float_to_ratio(m_numSQRT,10);
+    Ratio new_rDenom;
+    new_rDenom = new_rDenom.convert_float_to_ratio(m_numSQRT,10);
+    new_rDenom = inverse(new_rDenom);
+    new_rDenom *= new_rNum;
+    return new_rDenom;
 }*/
 
 int Ratio::get_num() const{
