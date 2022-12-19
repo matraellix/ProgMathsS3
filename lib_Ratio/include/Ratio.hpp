@@ -56,9 +56,6 @@ class Ratio {
     /// \brief destructor
     ~Ratio() = default;
 
-    /// \brief return the rational number from a real
-    Ratio convert_float_to_ratio(const double &real, int nb_iter);
-
     /// \brief arithmetic operators
     Ratio operator+(const Ratio &r) const;
     Ratio operator-(const Ratio &r) const;
@@ -89,21 +86,23 @@ class Ratio {
     bool operator<(const Ratio &r);
     
     /// \brief methods
-    Ratio inverse(const Ratio &r);
-    Ratio abs();
-    Ratio squareRoot();
     int get_num() const;
     int get_denom() const; 
-
     int set_num(int num);
     int set_denom(int denom);
 
-    void denom_positif();
+    Ratio abs();
+    Ratio squareRoot();
+    int integer_part();
 
+    void denom_positif();
     void reduce_frac();
-    //Ratio reduce_frac(const int &num, const int &denom);
 
 };
-
+    Ratio inverse(const Ratio &r);
+    Ratio pow(const Ratio &r, const unsigned int n);
+    double exp(const Ratio &r);
+    /// \brief return the rational number from a real
+    Ratio convert_float_to_ratio(const double &real, int nb_iter);
     
     std::ostream& operator<< (std::ostream& stream, const Ratio& r);

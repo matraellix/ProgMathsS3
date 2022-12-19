@@ -80,5 +80,9 @@ int main()
     std::cout << "sqrt j: " << j.squareRoot() << std::endl;
     std::cout << "sqrt m: " << m.squareRoot() << std::endl;
 
+    Ratio n(-7,2);
+    std::cout << "integer part n " << n << " : " << n.integer_part() << std::endl;
+    Ratio o(-3,2);
+    std::cout << "(" << o << ")Â³ = " << pow(o,3) << std::endl;
     return 0;
 }
