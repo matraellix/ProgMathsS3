@@ -93,7 +93,9 @@ class Ratio {
 
     Ratio abs();
     Ratio squareRoot();
+    Ratio convert_to_percentage();
     int integer_part();
+    float convert_ratio_to_float();
 
     void denom_positif();
     void reduce_frac();
@@ -104,5 +106,6 @@ class Ratio {
     double exp(const Ratio &r);
     /// \brief return the rational number from a real
     Ratio convert_float_to_ratio(const double &real, int nb_iter);
+    
     
     std::ostream& operator<< (std::ostream& stream, const Ratio& r);

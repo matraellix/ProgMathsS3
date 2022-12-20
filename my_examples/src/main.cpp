@@ -71,8 +71,7 @@ int main()
     Ratio k(1,2);
     Ratio l(4,1);
     float fl = 2.5;
-    std::cout << k*fl << std::endl;
-
+    std::cout << "test multi : "<< k*fl<< std::endl;
     std::cout << k*l << std::endl;
 
     Ratio j(3,4);
@@ -84,5 +83,12 @@ int main()
     std::cout << "integer part n " << n << " : " << n.integer_part() << std::endl;
     Ratio o(-3,2);
     std::cout << "(" << o << ")Â³ = " << pow(o,3) << std::endl;
+
+    Ratio p(10,21);
+    std::cout <<" percentage approximé m: " << p.convert_to_percentage()<<std::endl;
+
+    Ratio q(5,14);
+    std::cout <<" float d'un ratio m: " << q.convert_ratio_to_float()<<std::endl;
+
     return 0;
 }

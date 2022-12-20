@@ -57,6 +57,8 @@ Ratio convert_float_to_ratio(const double &real, int nb_iter){
     return Ratio(0,1);
 }
 
+
+
 void Ratio::denom_positif(){
     if(m_denom < 0){
         m_num *= -1;
@@ -65,7 +67,6 @@ void Ratio::denom_positif(){
 }
 
 void Ratio::reduce_frac(){
-    //cas -num/-denom ou num/-denom -> (r.m_num < 0 && r.mdenom<0) || (r.m_num > 0 && r.mdenom<0) -> r.mdenom<0    
     int gcd = std::gcd(m_num, m_denom);
     m_num /= gcd;
     m_denom /= gcd;  
@@ -90,6 +91,11 @@ Ratio Ratio::operator/(const Ratio &r) const {
    return Ratio((m_num * r.m_denom), (m_denom * r.m_num)); 
 
 }
+/*
+Ratio Ratio::operator%(const Ratio &r) const {
+   return Ratio((m_num * r.m_denom), (m_denom * r.m_num)); 
+
+}*/
 
 Ratio Ratio::operator*(const Ratio &r) const {
     return Ratio((m_num * r.m_num), (m_denom * r.m_denom)); 
@@ -203,8 +209,17 @@ Ratio Ratio::squareRoot(){
     return new_r;
 }
 
+Ratio Ratio::convert_to_percentage(){
+    //num*100/denom
+    //attention simplicifation non voulue on voudrait rester à du /100. Peut-etre ajouter booléen en 3e arg
+    return Ratio(m_num*100/m_denom, 100);
+}
+
 int Ratio::integer_part(){
-   return m_num/m_denom;
+    return m_num/m_denom;
+}
+float Ratio::convert_ratio_to_float(){
+    return static_cast<float>(m_num)/static_cast<float>(m_denom);
 }
 
 //segmentation error for n < 0;
