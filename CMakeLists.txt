@@ -33,11 +33,20 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 #set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
 
 
-# add libRatio
+# add lib_Ratio
 message(STATUS "lib_Ratio cmake part ..." )
 add_subdirectory(lib_Ratio INTERFACE)
 include_directories(${CMAKE_SOURCE_DIR}/lib_Ratio/include) # important : other projects called by this cmake will know this include directory
 
-# add myExamples
+# add my_examples
 message(STATUS "my_examples cmake part ..." )
 add_subdirectory(my_examples)
+
+# add test_units
+find_package(GTest OPTIONAL_COMPONENTS)
+if(GTEST_FOUND)
+	message(STATUS "test_units cmake part ..." )
+	add_subdirectory(test_units)
+elseif()
+	message(WARNING "google test not found, skipping myTest ..." )
+endif()
