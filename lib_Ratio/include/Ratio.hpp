@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cassert>
 
 // Doxygen menu
 /// \version 0.1
@@ -62,8 +63,8 @@ class Ratio {
     Ratio operator-() const;
     Ratio operator/(const Ratio &r) const;
     Ratio operator*(const Ratio &r) const;
-    Ratio operator*(const float &f) const;
-    Ratio operator*(const int &i) const;
+    //Ratio operator*(const float &f) const;
+    //Ratio operator*(const int &i) const;
     /// \brief assignment operators
     Ratio & operator=(const Ratio &r);
     Ratio & operator+=(const Ratio &r);
@@ -102,10 +103,100 @@ class Ratio {
 
 };
     Ratio inverse(const Ratio &r);
-    Ratio pow(const Ratio &r, const unsigned int n);
-    double exp(const Ratio &r);
+    Ratio power(const Ratio &r, const int n);
+    double expo(const Ratio &r);
     /// \brief return the rational number from a real
     Ratio convert_float_to_ratio(const double &real, int nb_iter);
-    
-    
     std::ostream& operator<< (std::ostream& stream, const Ratio& r);
+
+
+    template<typename T> 
+    Ratio from_int_or_float(const T &nb);
+    template<typename T> 
+    Ratio operator*(const T &nb, const Ratio &r);
+    template<typename T> 
+    Ratio operator/(const T &nb, const Ratio &r);
+    template<typename T> 
+    Ratio from_int_or_float(const T &nb);
+
+
+template<typename T> 
+Ratio from_int_or_float(const T &nb){
+    Ratio r;
+    if(std::is_integral<T>::value){
+        r = nb;
+    } else {
+        r = convert_float_to_ratio(nb,10);
+    }
+    return r;
+}
+
+template<typename T> 
+Ratio operator*(const T &nb, const Ratio &r) {
+    Ratio new_r = from_int_or_float(nb);
+    new_r *= r;
+    new_r.reduce_frac();
+    return new_r; 
+}
+
+
+template<typename T> 
+Ratio operator/(const T &nb, const Ratio &r){
+    if (nb == 0) return 0;
+    Ratio new_r = from_int_or_float(nb);
+    new_r /= r;
+    new_r.reduce_frac();
+    return new_r;  
+}
+
+template<typename T> 
+Ratio operator+(const T &nb, const Ratio &r) {
+    Ratio new_r = from_int_or_float(nb);
+    new_r += r;
+    new_r.reduce_frac();
+    return new_r; 
+}
+
+template<typename T> 
+Ratio operator-(const T &nb, const Ratio &r) {
+    Ratio new_r = from_int_or_float(nb);
+    new_r -= r;
+    new_r.reduce_frac();
+    return new_r; ; 
+}
+
+template<typename T> 
+bool operator==(const T &nb, const Ratio &r){
+    Ratio new_r = from_int_or_float(nb);
+    return new_r == r;
+}
+
+template<typename T> 
+bool operator!=(const T &nb, const Ratio &r){
+    Ratio new_r = from_int_or_float(nb);
+    return !(new_r == r);
+}
+
+template<typename T> 
+bool operator>(const T &nb, const Ratio &r){
+    Ratio new_r = from_int_or_float(nb);
+    return (new_r > r);
+}
+
+template<typename T> 
+bool operator<(const T &nb, const Ratio &r){
+    Ratio new_r = from_int_or_float(nb);
+    return (new_r < r);
+}
+
+template<typename T> 
+bool operator>=(const T &nb, const Ratio &r){
+    Ratio new_r = from_int_or_float(nb);
+    return !(new_r < r);
+}
+
+template<typename T> 
+bool operator<=(const T &nb, const Ratio &r){
+    Ratio new_r = from_int_or_float(nb);
+    return !(new_r > r);
+}

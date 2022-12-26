@@ -3,7 +3,7 @@
 
 int main()
 {
-    Ratio b(10,4); 
+    Ratio b(0,5); 
     std::cout << b << std::endl;
     b = -b;
     std::cout << "- unaire : " << b << std::endl;
@@ -70,8 +70,35 @@ int main()
 
     Ratio k(1,2);
     Ratio l(4,1);
-    float fl = 2.5;
-    std::cout << "test multi : "<< k*fl<< std::endl;
+    //float fl = 2.5;
+    std::cout << "test multi 0.5*k : "<< 0.5*k << std::endl;
+    std::cout << "test multi k*0.5 : "<< k*0.25 << std::endl;
+    std::cout << "test multi 2*k : "<< 3*k << std::endl;
+    std::cout << "test multi k*2 : "<< k*3 << std::endl;
+    std::cout << "test div 0/k : "<< 0/k << std::endl;
+    std::cout << "test div k/2 : "<< k/2 << std::endl;
+    std::cout << "test div 2/2.5 : "<< k/2.5 << std::endl;
+    std::cout << "test div 2/K : "<< 2/k << std::endl;
+
+    std::cout << "test addition k+2 : "<< k+2 << std::endl;
+    std::cout << "test addition 2+k : "<< 2+k << std::endl;
+    std::cout << "test soustraction k-2: "<< k-2 << std::endl;
+    std::cout << "test soustraction 2-k: "<< 2-k << std::endl;
+
+    std::cout << "test k == 0 : "<< (k == 0) << std::endl;
+    std::cout << "test 0 == k : "<< (0 == k) << std::endl;
+    std::cout << "test k == 0.5 : "<< (k == 0.5) << std::endl;
+    std::cout << "test 0.5 == k : "<< (0.5 == k) << std::endl;
+    std::cout << "test k != 0.5 : "<< (k != 0.5) << std::endl;
+    std::cout << "test 0.5 != k : "<< (0.5 != k) << std::endl;
+    std::cout << "test k != 1 : "<< (k != 1) << std::endl;
+    std::cout << "test 1 != k : "<< (1 != k) << std::endl;
+    std::cout << "test k > 0.5 : "<< (k > 0.5) << std::endl;
+    std::cout << "test 0.5 <= k : "<< (0.5 <= k) << std::endl;
+    std::cout << "test k < 0.5 : "<< (k < 0.5) << std::endl;
+    std::cout << "test 0.5 => k : "<< (0.5 >= k) << std::endl;
+
+
     std::cout << k*l << std::endl;
 
     Ratio j(3,4);
@@ -82,13 +109,16 @@ int main()
     Ratio n(-7,2);
     std::cout << "integer part n " << n << " : " << n.integer_part() << std::endl;
     Ratio o(-3,2);
-    std::cout << "(" << o << ")Â³ = " << pow(o,3) << std::endl;
+    std::cout << "(" << o << ")Â³ = " << power(o,2) << std::endl;
 
     Ratio p(10,21);
     std::cout <<" percentage approximé m: " << p.convert_to_percentage()<<std::endl;
 
     Ratio q(5,14);
     std::cout <<" float d'un ratio m: " << q.convert_ratio_to_float()<<std::endl;
+
+    Ratio r(1,2);
+    std::cout <<" exponentielle de r(1,2): " << expo(r) <<std::endl;
 
     return 0;
 }

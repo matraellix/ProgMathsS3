@@ -1,12 +1,14 @@
 #include <iostream>
 #include <numeric>
 #include <cmath>
+#include <stdexcept>
+#include <cassert>
 #include "Ratio.hpp"
 
 
 /*******CONSTRUCTORS***********/
-Ratio::Ratio(const int &num, const int &denom){
-    if(denom == 0) throw std::string("division by zero");
+Ratio::Ratio(const int &num, const int &denom){ 
+    assert( (denom != 0) && "error: division by zero not possible");
     int gcd = std::gcd(num, denom);
     m_num = num/gcd;
     m_denom = denom/gcd;  
@@ -57,8 +59,6 @@ Ratio convert_float_to_ratio(const double &real, int nb_iter){
     return Ratio(0,1);
 }
 
-
-
 void Ratio::denom_positif(){
     if(m_denom < 0){
         m_num *= -1;
@@ -88,8 +88,10 @@ Ratio Ratio::operator-() const {
 }
 
 Ratio Ratio::operator/(const Ratio &r) const {
-   return Ratio((m_num * r.m_denom), (m_denom * r.m_num)); 
-
+    if (m_denom * r.m_num == 0){
+        throw std::domain_error("divide by zero");
+    }
+    return Ratio((m_num * r.m_denom), (m_denom * r.m_num)); 
 }
 /*
 Ratio Ratio::operator%(const Ratio &r) const {
@@ -99,21 +101,6 @@ Ratio Ratio::operator%(const Ratio &r) const {
 
 Ratio Ratio::operator*(const Ratio &r) const {
     return Ratio((m_num * r.m_num), (m_denom * r.m_denom)); 
-}
-
-Ratio Ratio::operator*(const float &f) const {
-    Ratio new_rf;
-    new_rf = convert_float_to_ratio(f,10);
-    new_rf.m_num *= m_num ;
-    new_rf.m_denom *= m_denom ;
-    new_rf.reduce_frac();
-    return new_rf; 
-}
-
-Ratio Ratio::operator*(const int &i) const {
-    Ratio new_r ((m_num * i), (m_denom));
-    new_r.reduce_frac();
-    return new_r; 
 }
 
 Ratio & Ratio::operator=(const Ratio &r) {
@@ -222,11 +209,13 @@ float Ratio::convert_ratio_to_float(){
     return static_cast<float>(m_num)/static_cast<float>(m_denom);
 }
 
-//segmentation error for n < 0;
-Ratio pow(const Ratio &r, const unsigned int n){
-    return (n==0) ? Ratio(1) : r * pow(r, n-1);
+Ratio power(const Ratio &r, const int n){
+    if (n < 0) {
+        throw std::out_of_range("power negative");
+    }
+    return (n==0) ? Ratio(1) : r * power(r, n-1);
 }
 
-double exp(const Ratio &r){
-    return 0;
+double expo(const Ratio &r){
+    return pow(exp(r.get_num()), (1.0/r.get_denom()));
 }
