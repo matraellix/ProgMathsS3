@@ -8,7 +8,9 @@
 
 /*******CONSTRUCTORS***********/
 Ratio::Ratio(const int &num, const int &denom){ 
+    //check if denom is not zero else we stop
     assert( (denom != 0) && "error: division by zero not possible");
+    //gcd to reduce the ratio
     int gcd = std::gcd(num, denom);
     m_num = num/gcd;
     m_denom = denom/gcd;  
@@ -33,14 +35,20 @@ int Ratio::set_denom(int denom){
 }
 
 Ratio inverse(const Ratio &r) {
+    assert((r.get_num() != 0) && "error: division by zero not possible");
     return Ratio(r.get_denom(), r.get_num());
 }
 
 Ratio::Ratio(const double &real){
-    const int nb_iter = 3;
+    const int nb_iter = 25;
     *this = convert_float_to_ratio(real, nb_iter);
+    (*this).denom_positif();
 }
-    
+
+const Ratio Ratio::infinit(){
+    return (1,0);
+}
+
 Ratio convert_float_to_ratio(const double &real, int nb_iter){
 
     if (real == 0){
@@ -93,11 +101,10 @@ Ratio Ratio::operator/(const Ratio &r) const {
     }
     return Ratio((m_num * r.m_denom), (m_denom * r.m_num)); 
 }
-/*
-Ratio Ratio::operator%(const Ratio &r) const {
-   return Ratio((m_num * r.m_denom), (m_denom * r.m_num)); 
 
-}*/
+Ratio Ratio::operator%(const Ratio &r) const {
+   return Ratio((m_num * r.m_denom) % (m_denom * r.m_num), (m_denom * r.m_denom)); 
+}
 
 Ratio Ratio::operator*(const Ratio &r) const {
     return Ratio((m_num * r.m_num), (m_denom * r.m_denom)); 
@@ -110,28 +117,28 @@ Ratio & Ratio::operator=(const Ratio &r) {
     return *this;
 }
 
-bool Ratio::operator==(const Ratio &r){
-    return (m_num * r.m_denom) == (r.m_num * m_denom);
+bool operator==(const Ratio & r1, const Ratio &r2){
+    return (r1.get_num() * r2.get_denom()) == (r2.get_num() * r1.get_denom());
 }
 
-bool Ratio::operator!=(const Ratio &r){
-    return !((m_num * r.m_denom) == (r.m_num * m_denom));
+bool operator!=(const Ratio & r1, const Ratio &r2){
+    return !(r1 == r2);
 }
 
-bool Ratio::operator>(const Ratio &r){
-    return (m_num * r.m_denom) > (r.m_num * m_denom);
+bool operator>(const Ratio & r1, const Ratio &r2){
+    return (r1.get_num() * r2.get_denom()) > (r2.get_num() * r1.get_denom());
 }
 
-bool Ratio::operator<(const Ratio &r){
-    return (m_num * r.m_denom) < (r.m_num * m_denom);
+bool operator<(const Ratio & r1, const Ratio &r2){
+    return (r1.get_num() * r2.get_denom()) < (r2.get_num() * r1.get_denom());
 }
 
-bool Ratio::operator>=(const Ratio &r){
-    return !(*this < r);
+bool operator>=(const Ratio & r1, const Ratio &r2){
+    return !(r1 < r2);
 }
 
-bool Ratio::operator<=(const Ratio &r){
-    return !(*this > r);
+bool operator<=(const Ratio & r1, const Ratio &r2){
+    return !(r1 > r2);
 }
 
 Ratio & Ratio::operator++(){
@@ -209,7 +216,9 @@ float Ratio::convert_ratio_to_float(){
     return static_cast<float>(m_num)/static_cast<float>(m_denom);
 }
 
+
 Ratio power(const Ratio &r, const int n){
+    //check if n negative, if it is its out of range, can't process.
     if (n < 0) {
         throw std::out_of_range("power negative");
     }
@@ -219,3 +228,5 @@ Ratio power(const Ratio &r, const int n){
 double expo(const Ratio &r){
     return pow(exp(r.get_num()), (1.0/r.get_denom()));
 }
+
+

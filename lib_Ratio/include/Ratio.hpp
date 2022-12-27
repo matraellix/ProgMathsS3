@@ -10,6 +10,7 @@
 /// \section install_bigsec How to install
 /// \subsection dependencies_sec Dependencies
 /// \li Doxygen (if you want the documentation)
+/// \li Google Test (if you want the Unit Test)
 /// \subsection install_sec Install with cmake (Linux / Mac)
 /// \li go to main dir
 /// \li mkdir build
@@ -58,145 +59,297 @@ class Ratio {
     ~Ratio() = default;
 
     /// \brief arithmetic operators
+
+    /// @brief sum of two rationals
+    /// @param r : ratio to add
+    /// @return Ratio sum of this and r
     Ratio operator+(const Ratio &r) const;
+
+    /// @brief substraction of two rationals
+    /// @param r : ratio to substract
+    /// @return Ratio sub of this and r
     Ratio operator-(const Ratio &r) const;
+
+    /// @brief unit minus
+    /// @return opposite ratio
     Ratio operator-() const;
+
+    /// @brief division of two rationals
+    /// @param r : ratio to substract
+    /// @return Ratio from division of this and r
     Ratio operator/(const Ratio &r) const;
+
+    /// @brief return the reminder of two rationals
+    /// @param r : ratio to divide
+    /// @return Ratio from modulo of this and r
+    Ratio operator%(const Ratio &r) const;
+
+    /// @brief multiplication of two rationals
+    /// @param r : ratio to multiply
+    /// @return Ratio from multiplication of this and r
     Ratio operator*(const Ratio &r) const;
-    //Ratio operator*(const float &f) const;
-    //Ratio operator*(const int &i) const;
+
     /// \brief assignment operators
+
+    /// @brief assign a new value to a rational
+    /// @param r : r is the new value to assign
+    /// @return Ratio with new value
     Ratio & operator=(const Ratio &r);
+
+    /// @brief  add a value to the current ratio and assign the new value
+    /// @param r : r is the new value to add and assign
+    /// @return Ratio with new value
     Ratio & operator+=(const Ratio &r);
+
+    /// @brief substract a value to the current ratio and assign the new value
+    /// @param r : r is the new value to substract and assign
+    /// @return Ratio with new value
     Ratio & operator-=(const Ratio &r);
+
+    /// @brief multiply a value to the current ratio and assign the new value
+    /// @param r : r is the new value to multiply and assign
+    /// @return Ratio with new value    
     Ratio & operator*=(const Ratio &r);
+    
+    /// @brief divide a value to the current ratio and assign the new value
+    /// @param r : r is the new value to divide and assign
+    /// @return Ratio with new value    
     Ratio & operator/=(const Ratio &r);
+
     /// \brief prefix increment and decrement operators
     Ratio & operator++();
     Ratio & operator--();
     /// \brief postfix increment and decrement operators
     Ratio operator++(int);
     Ratio operator--(int);
-
-    /// \brief comparison operators
-    bool operator==(const Ratio &r);
-    bool operator!=(const Ratio &r);
-    bool operator>=(const Ratio &r);
-    bool operator<=(const Ratio &r);
-    bool operator>(const Ratio &r);
-    bool operator<(const Ratio &r);
     
     /// \brief methods
+
+    /// @brief get the ratio numerator
+    /// @return int, numerator
     int get_num() const;
+
+    /// @brief get the ratio denominator
+    /// @return int, denominator
     int get_denom() const; 
+
+    /// @brief set a new numerator to the ratio
+    /// @param num : int, new numerator
+    /// @return int, new numerator    
     int set_num(int num);
+
+    /// @brief set a new denominator to the ratio
+    /// @param denom : int, new denominator
+    /// @return int, new denominator
     int set_denom(int denom);
 
+    /// @brief return the absolute of a ratio
+    /// @return Ratio in its absolute form 
     Ratio abs();
+
+    /// @brief return the square root of a ratio
+    /// @return Ratio  
     Ratio squareRoot();
+
+    /// @brief convert a rational to a percentage
+    /// @return Ratio 
     Ratio convert_to_percentage();
+
+    /// @brief give the integer part of the ratio
+    /// @return int 
     int integer_part();
+
+
     float convert_ratio_to_float();
 
+    /// @brief return positive denominator
     void denom_positif();
+
+    /// @brief reduce the rational with gcd 
     void reduce_frac();
 
+    /// @brief rational form of infinit
+    /// @return Ratio of infinit
+    const Ratio infinit();
+
 };
+    /// @brief inverse a rationnal
+    /// @param r ratio to inverse
+    /// @return inversed ratio
     Ratio inverse(const Ratio &r);
+
+    /// @brief return the power of a rational
+    /// @param r : ratio to calculate the power
+    /// @return Ratio, value of the power
     Ratio power(const Ratio &r, const int n);
+
+    /// @brief return the exponential value of a rational
+    /// @param r : ratio to calculate exponential
+    /// @return double, value of exponential
     double expo(const Ratio &r);
-    /// \brief return the rational number from a real
+
+    /// @brief convert real to rationnal
+    /// @param real: double to convert
+    /// @param nb_iter : int, nb of times we call the function
+    /// @return Rational form of real
     Ratio convert_float_to_ratio(const double &real, int nb_iter);
+
+    /// @brief display the rationnal
+    /// @param stream 
+    /// @param r Ratio to display
+    /// @return display the rationnal
     std::ostream& operator<< (std::ostream& stream, const Ratio& r);
 
+    /// \brief comparison operators
 
-    template<typename T> 
-    Ratio from_int_or_float(const T &nb);
-    template<typename T> 
-    Ratio operator*(const T &nb, const Ratio &r);
-    template<typename T> 
-    Ratio operator/(const T &nb, const Ratio &r);
-    template<typename T> 
-    Ratio from_int_or_float(const T &nb);
+    /// @brief equal comparison between two rationals
+    /// @param r1 : ratio to compare
+    /// @param r2 : ratio to compare
+    /// @return  bool from comparison
+    bool operator==(const Ratio &r1, const Ratio &r2);
+
+    /// @brief not_equal comparison between two rationals
+    /// @param r1 : ratio to compare
+    /// @param r2 : ratio to compare
+    /// @return  bool from comparison
+    bool operator!=(const Ratio &r1, const Ratio &r2);
+
+    /// @brief greater or equal than comparison between two rationals
+    /// @param r1 : ratio to compare
+    /// @param r2 : ratio to compare
+    /// @return  bool from r1 greater or equal than r2
+    bool operator>=(const Ratio &r1, const Ratio &r2);
 
 
-template<typename T> 
-Ratio from_int_or_float(const T &nb){
-    Ratio r;
-    if(std::is_integral<T>::value){
-        r = nb;
-    } else {
-        r = convert_float_to_ratio(nb,10);
-    }
-    return r;
-}
+    /// @brief less or equal than comparison between two rationals
+    /// @param r1 : ratio to compare
+    /// @param r2 : ratio to compare
+    /// @return  bool from r1 less or equal than r2
+    bool operator<=(const Ratio &r1, const Ratio &r2);
 
+    /// @brief greater than comparison between two rationals
+    /// @param r1 : ratio to compare
+    /// @param r2 : ratio to compare
+    /// @return  bool from r1 greater than r2
+    bool operator>(const Ratio &r1, const Ratio &r2);
+
+    /// @brief less than comparison between two rationals
+    /// @param r1 : ratio to compare
+    /// @param r2 : ratio to compare
+    /// @return  bool from r1 less than r2
+    bool operator<(const Ratio &r1, const Ratio &r2);
+
+
+
+/// \brief comparison template operators
+
+/// @brief template multiplication
+/// @tparam T : int or float/double
+/// @param nb : real to multiply 
+/// @param r : ratio to multiply
+/// @return Ratio from the multiplication
 template<typename T> 
 Ratio operator*(const T &nb, const Ratio &r) {
-    Ratio new_r = from_int_or_float(nb);
-    new_r *= r;
-    new_r.reduce_frac();
-    return new_r; 
+    //check if nb is an integer or a float else we stop
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator*(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");
+    return r*nb;
 }
 
-
+/// @brief template division
+/// @tparam T : int or float/double
+/// @param nb : real to divide
+/// @param r : ratio to divide
+/// @return Ratio from division
 template<typename T> 
 Ratio operator/(const T &nb, const Ratio &r){
-    if (nb == 0) return 0;
-    Ratio new_r = from_int_or_float(nb);
-    new_r /= r;
-    new_r.reduce_frac();
-    return new_r;  
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator/(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");
+    return inverse(r)*nb;
 }
 
+/// @brief template sum
+/// @tparam T : int or float/double
+/// @param nb : real to add
+/// @param r : ratio to add
+/// @return Ratio from sum
 template<typename T> 
 Ratio operator+(const T &nb, const Ratio &r) {
-    Ratio new_r = from_int_or_float(nb);
-    new_r += r;
-    new_r.reduce_frac();
-    return new_r; 
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator+(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");
+    return r+nb;
 }
 
+/// @brief template substraction
+/// @tparam T : int or float/double
+/// @param nb : real to sub
+/// @param r : ratio to sub
+/// @return  Ratio from substraction
 template<typename T> 
 Ratio operator-(const T &nb, const Ratio &r) {
-    Ratio new_r = from_int_or_float(nb);
-    new_r -= r;
-    new_r.reduce_frac();
-    return new_r; ; 
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator-(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");
+    return r-nb;
 }
 
+/// @brief template equal comparison
+/// @tparam T : int or float/double
+/// @param nb : real to compare
+/// @param r : ratio to compare
+/// @return  bool from comparison
 template<typename T> 
 bool operator==(const T &nb, const Ratio &r){
-    Ratio new_r = from_int_or_float(nb);
-    return new_r == r;
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator==(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");
+    return r == nb;
 }
 
+/// @brief template not_equal comparison
+/// @tparam T : int or float/double
+/// @param nb : real to compare
+/// @param r : ratio to compare
+/// @return  bool from comparison
 template<typename T> 
 bool operator!=(const T &nb, const Ratio &r){
-    Ratio new_r = from_int_or_float(nb);
-    return !(new_r == r);
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator!=(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");
+    return !(nb == r);
 }
 
+/// @brief template greater than comparison between a real and rational
+/// @tparam T : int or float/double
+/// @param nb : real to compare
+/// @param r : ratio to compare
+/// @return  bool from comparison nb greater than r
 template<typename T> 
 bool operator>(const T &nb, const Ratio &r){
-    Ratio new_r = from_int_or_float(nb);
-    return (new_r > r);
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator>(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");
+    return r < nb;
 }
 
+/// @brief template less than comparison between a real and rational
+/// @tparam T : int or float/double
+/// @param nb : real to compare
+/// @param r : ratio to compare
+/// @return  bool from comparison nb less than r
 template<typename T> 
 bool operator<(const T &nb, const Ratio &r){
-    Ratio new_r = from_int_or_float(nb);
-    return (new_r < r);
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator<(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");  
+    return r > nb;
 }
 
+/// @brief template greater than or equal comparison between a real and rational
+/// @tparam T : int or float/double
+/// @param nb : real to compare
+/// @param r : ratio to compare
+/// @return  bool from comparison nb greather or equal than r
 template<typename T> 
 bool operator>=(const T &nb, const Ratio &r){
-    Ratio new_r = from_int_or_float(nb);
-    return !(new_r < r);
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator>=(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");    
+    return !(nb < r);
 }
 
+/// @brief template less or equal than comparison between a real and rational
+/// @tparam T : int or float/double
+/// @param nb : real to compare
+/// @param r : ratio to compare
+/// @return  bool from comparison nb less or equal than r
 template<typename T> 
 bool operator<=(const T &nb, const Ratio &r){
-    Ratio new_r = from_int_or_float(nb);
-    return !(new_r > r);
+    static_assert( (std::is_arithmetic_v<T>), "Ratio::operator<=(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");  
+    return !(nb > r);
 }

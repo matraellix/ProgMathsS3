@@ -71,13 +71,14 @@ int main()
     Ratio k(1,2);
     Ratio l(4,1);
     //float fl = 2.5;
+    std::string aie = "aie";
     std::cout << "test multi 0.5*k : "<< 0.5*k << std::endl;
-    std::cout << "test multi k*0.5 : "<< k*0.25 << std::endl;
-    std::cout << "test multi 2*k : "<< 3*k << std::endl;
-    std::cout << "test multi k*2 : "<< k*3 << std::endl;
+    std::cout << "test multi k*0.5 : "<< k*0.5 << std::endl;
+    std::cout << "test multi 3*k : "<< 3*k << std::endl;
+    std::cout << "test multi k*3 : "<< k*3 << std::endl;
     std::cout << "test div 0/k : "<< 0/k << std::endl;
     std::cout << "test div k/2 : "<< k/2 << std::endl;
-    std::cout << "test div 2/2.5 : "<< k/2.5 << std::endl;
+    std::cout << "test div k/2.5 : "<< k/2.5 << std::endl;
     std::cout << "test div 2/K : "<< 2/k << std::endl;
 
     std::cout << "test addition k+2 : "<< k+2 << std::endl;
@@ -119,6 +120,18 @@ int main()
 
     Ratio r(1,2);
     std::cout <<" exponentielle de r(1,2): " << expo(r) <<std::endl;
+
+    std::cout << "infini : " << r.infinit() << std::endl;
+
+    Ratio s(9,1);
+    Ratio t(4,1);
+    std::cout << "1/2 % 5/7 : " << s%t << std::endl;
+
+    Ratio wow(0.025);
+    std::cout << "0.00025 : " << wow << std::endl;
+
+    Ratio wow1(102.565);
+    std::cout << "102.565 : " << wow1 << std::endl;
 
     return 0;
 }
