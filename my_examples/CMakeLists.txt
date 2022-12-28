@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.13)
 project(MyExamples)
 
 # file to compile and name of the executable
-add_executable(MyExamples src/main.cpp src/test1.cpp include/test1.hpp)
+add_executable(MyExamples src/main.cpp)
 
 # include directory
 #target_include_directories(MyExamples PRIVATE "include")

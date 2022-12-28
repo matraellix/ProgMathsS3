@@ -104,8 +104,8 @@ int main()
 
     Ratio j(3,4);
     Ratio m(1,2);
-    std::cout << "sqrt j: " << j.squareRoot() << std::endl;
-    std::cout << "sqrt m: " << m.squareRoot() << std::endl;
+    std::cout << "sqrt j: " << j.square_root() << std::endl;
+    std::cout << "sqrt m: " << m.square_root() << std::endl;
 
     Ratio n(-7,2);
     std::cout << "integer part n " << n << " : " << n.integer_part() << std::endl;
@@ -127,11 +127,20 @@ int main()
     Ratio t(4,1);
     std::cout << "1/2 % 5/7 : " << s%t << std::endl;
 
-    Ratio wow(0.025);
+    Ratio wow(0.00025);
     std::cout << "0.00025 : " << wow << std::endl;
 
-    Ratio wow1(102.565);
-    std::cout << "102.565 : " << wow1 << std::endl;
+    Ratio u(1,2);
+    std::cout << "cos : " << cosinus_ratio(u) << std::endl;
+
+    Ratio v(1,2);
+    std::cout << "sin : " << sinus_ratio(v) << std::endl;
+
+    Ratio w(1,2);
+    std::cout << "tan : " << tan_ratio(w) << std::endl;
+    
+    Ratio x(100,1);
+    std::cout <<" logarithm of x(1/2): " << logarithm(x) <<std::endl;
 
     return 0;
 }

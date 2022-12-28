@@ -40,13 +40,16 @@ Ratio inverse(const Ratio &r) {
 }
 
 Ratio::Ratio(const double &real){
-    const int nb_iter = 25;
+    const int nb_iter = 10;
     *this = convert_float_to_ratio(real, nb_iter);
-    (*this).denom_positif();
+    (*this).denom_positive();
 }
 
 const Ratio Ratio::infinit(){
     return (1,0);
+}
+const Ratio Ratio::zero(){
+    return (0,1);
 }
 
 Ratio convert_float_to_ratio(const double &real, int nb_iter){
@@ -67,7 +70,7 @@ Ratio convert_float_to_ratio(const double &real, int nb_iter){
     return Ratio(0,1);
 }
 
-void Ratio::denom_positif(){
+void Ratio::denom_positive(){
     if(m_denom < 0){
         m_num *= -1;
         m_denom *= -1;
@@ -78,7 +81,7 @@ void Ratio::reduce_frac(){
     int gcd = std::gcd(m_num, m_denom);
     m_num /= gcd;
     m_denom /= gcd;  
-    (*this).denom_positif();
+    (*this).denom_positive();
 }
 
 /*******OPERATORS*******/
@@ -185,20 +188,21 @@ std::ostream& operator<< (std::ostream& stream, const Ratio& r){
 }
 
 Ratio Ratio::abs() {
-    (*this).denom_positif();
+    if (m_num == 0){
+        return zero();
+    }
+    if (m_denom == 0){
+        return infinit();
+    }
+    (*this).denom_positive();
     return (m_num < 0) ? Ratio(-m_num, m_denom) : Ratio(m_num, m_denom);
 }
 
-Ratio Ratio::squareRoot(){
-    float m_numSQRT = sqrt(m_num);
-    float m_denomSQRT = sqrt(m_denom);
-    Ratio new_rNum;
-    new_rNum = convert_float_to_ratio(m_numSQRT,10);
-    Ratio new_rDenom;
-    new_rDenom = convert_float_to_ratio(m_denomSQRT,10);
-    new_rDenom = inverse(new_rDenom);
-    Ratio new_r;
-    new_r = new_rDenom*new_rNum;
+
+Ratio Ratio::square_root(){
+    Ratio new_rNum = convert_float_to_ratio(sqrt(m_num),10);
+    Ratio new_rDenom = inverse(convert_float_to_ratio(sqrt(m_denom),10));
+    Ratio new_r = new_rDenom*new_rNum;
     new_r.reduce_frac();
     return new_r;
 }
@@ -220,13 +224,46 @@ float Ratio::convert_ratio_to_float(){
 Ratio power(const Ratio &r, const int n){
     //check if n negative, if it is its out of range, can't process.
     if (n < 0) {
-        throw std::out_of_range("power negative");
+        throw std::out_of_range("Domain error: power negative");
     }
     return (n==0) ? Ratio(1) : r * power(r, n-1);
 }
 
-double expo(const Ratio &r){
-    return pow(exp(r.get_num()), (1.0/r.get_denom()));
+Ratio expo(const Ratio &r){
+    if(r.get_num()==0){
+        return Ratio(1,1);
+    }
+    return convert_float_to_ratio(pow(exp(r.get_num()), (1.0/r.get_denom())), 10);
+}
+//Log is not precise
+Ratio logarithm(const Ratio &r){
+    if (r <= 0){
+        throw std::out_of_range("Domain error: logarithm cannot be negative or equal to 0");
+    }
+    return convert_float_to_ratio((std::log(r.get_num()))-(std::log(r.get_denom())), 15);
 }
 
+//trigonometry in degrees
+//simple version of cosinus
+Ratio cosinus_ratio(const Ratio &r){
+    float num = r.get_num();
+    float denom = r.get_denom();
+    float arg_cos = num/denom;
+    Ratio cosi = convert_float_to_ratio(std::cos(arg_cos*M_PI/180),10);
+    cosi.reduce_frac();
+    return cosi;
+}
+
+Ratio sinus_ratio(const Ratio &r){
+    float num = r.get_num();
+    float denom = r.get_denom();
+    float arg_cos = num/denom;
+    Ratio sinus = convert_float_to_ratio(std::sin(arg_cos*M_PI/180),10);
+    sinus.reduce_frac();
+    return sinus;
+}
+
+Ratio tan_ratio(const Ratio &r){
+    return Ratio(sinus_ratio(r)/cosinus_ratio(r));
+}
 

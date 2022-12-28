@@ -149,7 +149,7 @@ class Ratio {
 
     /// @brief return the square root of a ratio
     /// @return Ratio  
-    Ratio squareRoot();
+    Ratio square_root();
 
     /// @brief convert a rational to a percentage
     /// @return Ratio 
@@ -163,7 +163,7 @@ class Ratio {
     float convert_ratio_to_float();
 
     /// @brief return positive denominator
-    void denom_positif();
+    void denom_positive();
 
     /// @brief reduce the rational with gcd 
     void reduce_frac();
@@ -172,8 +172,18 @@ class Ratio {
     /// @return Ratio of infinit
     const Ratio infinit();
 
+    /// @brief rational form of 0
+    /// @return Ratio of 0
+    const Ratio zero();
+
+    /// @brief display the rational
+    /// @param stream 
+    /// @param r Ratio to display
+    /// @return display the rational
+    friend std::ostream &operator<< (std::ostream& stream, const Ratio& r);
+
 };
-    /// @brief inverse a rationnal
+    /// @brief inverse a rational
     /// @param r ratio to inverse
     /// @return inversed ratio
     Ratio inverse(const Ratio &r);
@@ -186,19 +196,33 @@ class Ratio {
     /// @brief return the exponential value of a rational
     /// @param r : ratio to calculate exponential
     /// @return double, value of exponential
-    double expo(const Ratio &r);
+    Ratio expo(const Ratio &r);
 
-    /// @brief convert real to rationnal
+    /// @brief return the logarithm Ratio value
+    /// @param r : ratio to calculate log
+    /// @return Ratio, value of log
+    Ratio logarithm(const Ratio &r);
+
+    /// @brief return the cosinus of a rational
+    /// @param r : ratio to calculate cos
+    /// @return ratio, value of cosinus
+    Ratio cosinus_ratio(const Ratio &r);
+
+    /// @brief return the sinus of a rational
+    /// @param r : ratio to calculate sin
+    /// @return ratio, value of sinus
+    Ratio sinus_ratio(const Ratio &r);
+
+    /// @brief return the tan of a rational
+    /// @param r : ratio to calculate tan
+    /// @return ratio, value of tan
+    Ratio tan_ratio(const Ratio &r);
+
+    /// @brief convert real to rational
     /// @param real: double to convert
     /// @param nb_iter : int, nb of times we call the function
     /// @return Rational form of real
     Ratio convert_float_to_ratio(const double &real, int nb_iter);
-
-    /// @brief display the rationnal
-    /// @param stream 
-    /// @param r Ratio to display
-    /// @return display the rationnal
-    std::ostream& operator<< (std::ostream& stream, const Ratio& r);
 
     /// \brief comparison operators
 

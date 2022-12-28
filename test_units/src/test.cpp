@@ -112,6 +112,60 @@ TEST (RatioComparison, inferior_equal) {
 	ASSERT_LE(0.5, r2);
 }
 
+TEST (RatioIncrement, plus_plus) {
+	Ratio r1(1,2);
+	Ratio r2(1,2);
+	Ratio r3(1,2);
+	r1++;
+	ASSERT_EQ(r1, r2 + 1);
+	++r2;
+	ASSERT_EQ(r2, r3 + 1);
+}
+
+TEST (RatioIncrement, minus_minus) {
+Ratio r1(1,2);
+	Ratio r2(1,2);
+	Ratio r3(1,2);
+	r1--;
+	ASSERT_EQ(r1, r2 - 1);
+	--r2;
+	ASSERT_EQ(r2, r3 - 1);
+}
+
+TEST (RatioAsignArithmetic, plus_equal) {
+	Ratio r1(1,2);
+	Ratio r2(5,2);
+	Ratio r3(5,2);
+	r2 += r1;
+	ASSERT_EQ(r2, r3+r1);
+}
+
+TEST (RatioAsignArithmetic, minus_equal) {
+	Ratio r1(1,2);
+	Ratio r2(5,2);
+	Ratio r3(5,2);
+	r2 -= r1;
+	ASSERT_EQ(r2, r3-r1);
+}
+TEST (RatioAsignArithmetic, dot_equal) {
+	Ratio r1(1,2);
+	Ratio r2(5,2);
+	Ratio r3(5,2);
+	r2 *= r1;
+	ASSERT_EQ(r2.get_num(), r1.get_num() * r3.get_num());
+	ASSERT_EQ(r2.get_denom(), r1.get_denom() * r3.get_denom());
+	ASSERT_EQ(r2, r1*r3);
+}
+
+TEST (RatioAsignArithmetic, divide_equal) {
+	Ratio r1(1,2);
+	Ratio r2(5,6);
+	Ratio r3(5,6);
+	r2 /= r1;
+	ASSERT_EQ(r2, r3 / r1);
+}
+
+
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
