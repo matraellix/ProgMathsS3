@@ -183,10 +183,10 @@ class Ratio {
     friend std::ostream &operator<< (std::ostream& stream, const Ratio& r);
 
 };
-    /// @brief inverse a rational
-    /// @param r ratio to inverse
-    /// @return inversed ratio
-    Ratio inverse(const Ratio &r);
+    /// @brief reverse a rational
+    /// @param r ratio to reverse
+    /// @return reversed ratio
+    Ratio reverse(const Ratio &r);
 
     /// @brief return the power of a rational
     /// @param r : ratio to calculate the power
@@ -198,10 +198,15 @@ class Ratio {
     /// @return double, value of exponential
     Ratio expo(const Ratio &r);
 
-    /// @brief return the logarithm Ratio value
+    /// @brief return the logarithm Ratio value (base e)
     /// @param r : ratio to calculate log
     /// @return Ratio, value of log
-    Ratio logarithm(const Ratio &r);
+    Ratio logarithmE(const Ratio &r);
+
+    /// @brief return the logarithm Ratio value (base 10)
+    /// @param r : ratio to calculate log
+    /// @return Ratio, value of log
+    Ratio logarithm10(const Ratio &r);
 
     /// @brief return the cosinus of a rational
     /// @param r : ratio to calculate cos
@@ -287,7 +292,7 @@ Ratio operator*(const T &nb, const Ratio &r) {
 template<typename T> 
 Ratio operator/(const T &nb, const Ratio &r){
     static_assert( (std::is_arithmetic_v<T>), "Ratio::operator/(const T &nb, const Ratio &r): invalid type of nb, should be int or float/double");
-    return inverse(r)*nb;
+    return reverse(r)*nb;
 }
 
 /// @brief template sum

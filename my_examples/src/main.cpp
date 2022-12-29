@@ -153,11 +153,10 @@ int main()
     //test for precision
     Ratio wow(0.00000025);
     std::cout << "0.00025 : " << wow << std::endl;
-
     double ca = 101.52;
     Ratio wow1(c);
     std::cout << ca << " : " << wow1 << std::endl;
-    std::cout << ca << " : " << std::setprecision(6) << ca - (double)wow1.convert_ratio_to_float() << std::endl;
+    std::cout << ca << " : " << std::setprecision(9) << ca - (double)wow1.convert_ratio_to_float() << std::endl;
 
     //trigonometry
     //cosinus
@@ -172,15 +171,13 @@ int main()
     Ratio w(1,2);
     std::cout << "tan : " << tan_ratio(w) << std::endl;
     
-    //logarithm
+    //logarithm base e
     Ratio x(3,2);
-    std::cout <<" logarithm of x(3/2): " << logarithm(x) <<std::endl;
+    std::cout <<"logarithm (e) of x(3/2): " << logarithmE(x) <<std::endl;
 
-    /*
-    //fails succesfully (it's intended): test of tan((M_PI)/2)
-    Ratio y(M_PI,2);
-    std::cout << "tan : " << tan_ratio(y) << std::endl;
-    */
+    //logarithm base 10
+    Ratio y(100,1);
+    std::cout <<"logarithm (10) of x(100/1): " << logarithm10(y) <<std::endl;
 
     return 0;
 }
