@@ -40,7 +40,7 @@ Ratio inverse(const Ratio &r) {
 }
 
 Ratio::Ratio(const double &real){
-    const int nb_iter = 10;
+    const int nb_iter =9;
     *this = convert_float_to_ratio(real, nb_iter);
     (*this).denom_positive();
 }
@@ -101,6 +101,12 @@ Ratio Ratio::operator-() const {
 Ratio Ratio::operator/(const Ratio &r) const {
     if (m_denom * r.m_num == 0){
         throw std::domain_error("divide by zero");
+    }
+    
+    if((*this)==r){
+        return Ratio(1,1);
+    }else if(((*this).m_num==0) || (r.m_num==0)){
+        return Ratio(0,1);
     }
     return Ratio((m_num * r.m_denom), (m_denom * r.m_num)); 
 }
@@ -200,8 +206,10 @@ Ratio Ratio::abs() {
 
 
 Ratio Ratio::square_root(){
-    Ratio new_rNum = convert_float_to_ratio(sqrt(m_num),10);
-    Ratio new_rDenom = inverse(convert_float_to_ratio(sqrt(m_denom),10));
+    (*this).denom_positive();
+    assert(((*this).m_num >= 0) && "sqrt impossible for negative numbers");
+    Ratio new_rNum = convert_float_to_ratio(sqrt(m_num),9);
+    Ratio new_rDenom = inverse(convert_float_to_ratio(sqrt(m_denom),9));
     Ratio new_r = new_rDenom*new_rNum;
     new_r.reduce_frac();
     return new_r;
@@ -233,23 +241,23 @@ Ratio expo(const Ratio &r){
     if(r.get_num()==0){
         return Ratio(1,1);
     }
-    return convert_float_to_ratio(pow(exp(r.get_num()), (1.0/r.get_denom())), 10);
+    return convert_float_to_ratio(pow(exp(r.get_num()), (1.0/r.get_denom())), 9);
 }
 //Log is not precise
 Ratio logarithm(const Ratio &r){
     if (r <= 0){
         throw std::out_of_range("Domain error: logarithm cannot be negative or equal to 0");
     }
-    return convert_float_to_ratio((std::log(r.get_num()))-(std::log(r.get_denom())), 15);
+    return convert_float_to_ratio((std::log(r.get_num()))-(std::log(r.get_denom())), 9);
 }
 
-//trigonometry in degrees
+//trigonometry in radians
 //simple version of cosinus
 Ratio cosinus_ratio(const Ratio &r){
     float num = r.get_num();
     float denom = r.get_denom();
     float arg_cos = num/denom;
-    Ratio cosi = convert_float_to_ratio(std::cos(arg_cos*M_PI/180),10);
+    Ratio cosi = convert_float_to_ratio(std::cos(arg_cos),9);
     cosi.reduce_frac();
     return cosi;
 }
@@ -258,12 +266,13 @@ Ratio sinus_ratio(const Ratio &r){
     float num = r.get_num();
     float denom = r.get_denom();
     float arg_cos = num/denom;
-    Ratio sinus = convert_float_to_ratio(std::sin(arg_cos*M_PI/180),10);
+    Ratio sinus = convert_float_to_ratio(std::sin(arg_cos),9);
     sinus.reduce_frac();
     return sinus;
 }
 
 Ratio tan_ratio(const Ratio &r){
+    assert((r != Ratio(M_PI,2)) && "tan(pi/2) is impossible");
     return Ratio(sinus_ratio(r)/cosinus_ratio(r));
 }
 
