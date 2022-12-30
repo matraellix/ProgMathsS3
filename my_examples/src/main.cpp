@@ -8,176 +8,163 @@
 int main()
 {
     //contructor
-    Ratio b(1,5); 
-    Ratio c(1,3);
-    std::cout << b << std::endl;
+    Ratio r1(1,5); 
+    std::cout << "constructor r1: " << r1 << std::endl;
 
     //default constructor
-    Ratio d;
-    std::cout << d << std::endl;
+    Ratio default_r;
+    std::cout << "default constructor: " << default_r << std::endl;
 
     //unary minus
-    b = -b;
-    std::cout << "- unaire : " << b << std::endl;
+    r1 = -r1;
+    std::cout << "r1 unary minus: " << r1 << std::endl;
 
     //absolute
-    Ratio z(-2,-3);
-    std::cout <<"abs : "<< z.abs() << std::endl;
-    Ratio g(-1.5);
-    std::cout << "g = "<< g << std::endl;
-    std::cout << "g.abs() = "<< g.abs() << std::endl;
+    Ratio r2(-2,-3);
+    std::cout << "r2 = "<< r2 << std::endl;
+    std::cout <<"abs : "<< r2.abs() << std::endl;
+    Ratio r3(-1.5);
+    std::cout << "r3 = "<< r3 << std::endl;
+    std::cout << "r3.abs() = "<< r3.abs() << std::endl;
     
     //arithmetic operators
     //plus
-    Ratio sum = b + c;
-    std::cout << " sum : " << sum << std::endl;
+    Ratio r4(1,3);
+    Ratio sum = r1 + r4;
+    std::cout << r1 << " + " << r4 << " = " << sum << std::endl;
     //minus
-    Ratio sub = b - c;
-    std::cout << " sub : " << sub << std::endl;
-    Ratio sub2 = c - b;
-    std::cout << " sub2 : " <<  sub2 << std::endl;
+    Ratio sub = r1 - r4;
+    std::cout << r1 << " - " << r4 << " = " << sub << std::endl;
+    Ratio sub2 = r4 - r1;
+    std::cout << r4 << " - " << r1 << " = " <<  sub2 << std::endl;
 
     //division
-    Ratio div = b / c;
-    std::cout << " div : " <<  div << std::endl;
+    Ratio div = r1 / r4;
+    std::cout << r1 << " / " << r4 << " = " << div << std::endl;
 
     //multiplication
-    Ratio mult = b * c;
-    std::cout << " mult : " <<  mult << std::endl;
+    Ratio mult = r1 * r4;
+    std::cout << r1 << " * " << r4 << " = " <<  mult << std::endl;
 
     //comparison
-    Ratio e(1,2); 
-    Ratio f(3,4);
+    Ratio r5(1,2); 
+    Ratio r6(3,4);
     std::cout << "1 = true and 0 = false" << std::endl;
-    std::cout << " e : " << e << " f : " << f << std::endl;
-    std::cout << "(e == f) :" << (e == f) << std::endl;
-    std::cout << "(e > f) :" << (e > f) << std::endl;
-    std::cout << "(e < f) :" << (e < f) << std::endl;
-    std::cout << "(e >= f) :" << (e >= f) << std::endl;
-    std::cout << "(e <= f) :" << (e <= f) << std::endl;
+    std::cout << " r5 : " << r5 << " r6 : " << r6 << std::endl;
+    std::cout << "(r5 == r6) :" << (r5 == r6) << std::endl;
+    std::cout << "(r5 > r6) :" << (r5 > r6) << std::endl;
+    std::cout << "(r5 < r6) :" << (r5 < r6) << std::endl;
+    std::cout << "(r5 >= r6) :" << (r5 >= r6) << std::endl;
+    std::cout << "(r5 <= r6) :" << (r5 <= r6) << std::endl;
 
 
     //increment and decrement operators
-    Ratio h(3,2); 
-    std::cout << "h : "<< h << std::endl;
-    std::cout << "++h : "<< ++h << std::endl;   
-    std::cout << "h++ : "<< h++ << std::endl;
-    std::cout << "--h : "<< --h << std::endl;
-    std::cout << "h-- : "<< h-- << std::endl;
+    std::cout << "r6 : "<< r6 << std::endl;
+    std::cout << "++r6 : "<< ++r6 << std::endl;   
+    std::cout << "r6++ : "<< r6++ << std::endl;
+    std::cout << "--r6 : "<< --r6 << std::endl;
+    std::cout << "r6-- : "<< r6-- << std::endl;
     
     //assignment operators
-    Ratio i(5,2); 
-    h+=i;
-    std::cout << "+= operator :"<< h << std::endl;
-    h-=i;
-    std::cout << "-= operator :"<< h << std::endl;
-    h*=i;
-    std::cout << "*= operator :"<< h << std::endl;
-    h/=i;
-    std::cout << "/= operator :"<< h << std::endl;
+    Ratio r7(5,2); 
+    r6+=r7;
+    std::cout << "+= operator :"<< r6 << std::endl;
+    r6=r7;
+    std::cout << "-= operator :"<< r6 << std::endl;
+    r6*=r7;
+    std::cout << "*= operator :"<< r6 << std::endl;
+    r6/=r7;
+    std::cout << "/= operator :"<< r6 << std::endl;
 
     //setter
-    i.set_num(7);
-    std::cout <<"set numerator to 7 : " << i << std::endl;
-    i.set_num(6);
-    std::cout <<"set numerator to 6 : " << i << std::endl;
-    //getter
-    i.get_num();
-    std::cout <<"get numerator : " << i << std::endl;
+    r7.set_num(7);
+    std::cout <<"set numerator to 7 : " << r7 << std::endl;
+    r7.get_num();
+    std::cout <<"get numerator : " << r7.get_num() << std::endl;
 
 
-    Ratio k(1,2);
+    Ratio r8(1,2);
     //test of operations with a float
-    std::string aie = "aie";
-    std::cout << "test multi 0.5*k : "<< 0.5*k << std::endl;
-    std::cout << "test multi k*0.5 : "<< k*0.5 << std::endl;
-    std::cout << "test multi 3*k : "<< 3*k << std::endl;
-    std::cout << "test multi k*3 : "<< k*3 << std::endl;
-    std::cout << "test div 0/k : "<< 0/k << std::endl;
-    std::cout << "test div k/2 : "<< k/2 << std::endl;
-    std::cout << "test div k/2.5 : "<< k/2.5 << std::endl;
-    std::cout << "test div 2/K : "<< 2/k << std::endl;
+    std::cout << "r8 = " << r8 << std::endl;
+    std::cout << "0.5 * r8 = " << 0.5*r8 << std::endl;
+    std::cout << "r8 * 0.5 = " << r8*0.5 << std::endl;
+    std::cout << "3 * r8 = " << 3*r8 << std::endl;
+    std::cout << "r8 * 3 = " << r8*3 << std::endl;
+    std::cout << "0 * r8 = " << 0/r8 << std::endl;
+    std::cout << "r8 / 2 = "<< r8/2 << std::endl;
+    std::cout << "2 / r8 = "<< 2/r8 << std::endl;
+    std::cout << "r8 + 2 = "<< r8+2 << std::endl;
+    std::cout << "2 + r8 = "<< 2+r8 << std::endl;
+    std::cout << "r8 - 2 = "<< r8-2 << std::endl;
+    std::cout << "2 - r8 = "<< 2-r8 << std::endl;
 
-    std::cout << "test addition k+2 : "<< k+2 << std::endl;
-    std::cout << "test addition 2+k : "<< 2+k << std::endl;
-    std::cout << "test soustraction k-2: "<< k-2 << std::endl;
-    std::cout << "test soustraction 2-k: "<< 2-k << std::endl;
-
-    std::cout << "test k == 0 : "<< (k == 0) << std::endl;
-    std::cout << "test 0 == k : "<< (0 == k) << std::endl;
-    std::cout << "test k == 0.5 : "<< (k == 0.5) << std::endl;
-    std::cout << "test 0.5 == k : "<< (0.5 == k) << std::endl;
-    std::cout << "test k != 0.5 : "<< (k != 0.5) << std::endl;
-    std::cout << "test 0.5 != k : "<< (0.5 != k) << std::endl;
-    std::cout << "test k != 1 : "<< (k != 1) << std::endl;
-    std::cout << "test 1 != k : "<< (1 != k) << std::endl;
-    std::cout << "test k > 0.5 : "<< (k > 0.5) << std::endl;
-    std::cout << "test 0.5 <= k : "<< (0.5 <= k) << std::endl;
-    std::cout << "test k < 0.5 : "<< (k < 0.5) << std::endl;
-    std::cout << "test 0.5 => k : "<< (0.5 >= k) << std::endl;
+    std::cout << "r8 == 0 : "<< (r8 == 0) << std::endl;
+    std::cout << "0 == r8 : "<< (0 == r8) << std::endl;
+    std::cout << "r8 == 0.5 : "<< (r8 == 0.5) << std::endl;
+    std::cout << "0.5 == r8 : "<< (0.5 == r8) << std::endl;
+    std::cout << "r8 != 0.5 : "<< (r8 != 0.5) << std::endl;
+    std::cout << "0.5 != r8 : "<< (0.5 != r8) << std::endl;
+    std::cout << "r8 != 1 : "<< (r8 != 1) << std::endl;
+    std::cout << "1 != r8 : "<< (1 != r8) << std::endl;
+    std::cout << "r8 > 0.5 : "<< (r8 > 0.5) << std::endl;
+    std::cout << "0.5 <= r8 : "<< (0.5 <= r8) << std::endl;
+    std::cout << "r8 < 0.5 : "<< (r8 < 0.5) << std::endl;
+    std::cout << "0.5 => r8 : "<< (0.5 >= r8) << std::endl;
 
     //square root of a ratio
-    Ratio j(3,4);
-    std::cout << "sqrt j: " << j.square_root() << std::endl;
-    Ratio m(1,2);
-    std::cout << "sqrt m: " << m.square_root() << std::endl;
+    std::cout << "sqrt r8: " << r8.square_root() << std::endl;
 
     //integer part of a ratio
-    Ratio n(-7,2);
-    std::cout << "integer part n " << n << " : " << n.integer_part() << std::endl;
+    std::cout << "integer part " << r8 << " : " << r8.integer_part() << std::endl;
 
     //power of a ratio
-    Ratio o(-3,2);
-    std::cout << "(" << o << ")³ = " << power(o,3) << std::endl;
+    std::cout << "(" << r8 << ")³ = " << power(r8,3) << std::endl;
 
     //approximated percentage of a ratio
-    Ratio p(10,21);
-    std::cout <<" approximated percentage : " << p.convert_to_percentage()<<std::endl;
+    Ratio r9(10,21);
+    std::cout <<" approximated percentage " << r9 << " : " << r9.convert_to_percentage() << std::endl;
 
     //convert ratio to float
-    Ratio q(5,14);
-    std::cout <<" float of a ratio : " << q.convert_ratio_to_float()<<std::endl;
+    Ratio r10(5,14);
+    std::cout <<" float of ratio " << r10 << " : " << r10.convert_ratio_to_float()<<std::endl;
 
     //exponential of a ratio
-    Ratio r(1,2);
-    std::cout <<" exponential r(1,2): " << expo(r) <<std::endl;
+    std::cout <<" exponential of " << r8 <<  " = " << expo(r8) <<std::endl;
 
     //infinite ratio
-    std::cout << "infinite : " << r.infinit() << std::endl;
+    std::cout << "infinite : " << r10.infinit() << std::endl;
 
     //modulo
-    Ratio s(9,1);
-    Ratio t(4,1);
-    std::cout << "1/2 % 5/7 : " << s%t << std::endl;
+    Ratio r11(9,1);
+    Ratio r12(4,1);
+    std::cout << r11 << " % "<< r12 << " : " << r11%r12 << std::endl;
 
     //test for precision
-    Ratio wow(0.00000025);
-    std::cout << "0.00025 : " << wow << std::endl;
-    double ca = 101.52;
-    Ratio wow1(c);
-    std::cout << ca << " : " << wow1 << std::endl;
-    std::cout << ca << " : " << std::setprecision(9) << ca - (double)wow1.convert_ratio_to_float() << std::endl;
+    double real = 0.00000025;
+    Ratio r_prec(real);
+    std::cout << "0.00000025 : " << r_prec << std::endl;
+    std::cout << real << " : " << std::setprecision(9) << real - (double)r_prec.convert_ratio_to_float() << std::endl;
 
     //trigonometry
     //cosinus
-    Ratio u(1,2);
-    std::cout << "cos : " << cosinus_ratio(u) << std::endl;
+    Ratio cos_r(1,2);
+    std::cout << "cos : " << cosinus_ratio(cos_r) << std::endl;
 
     //sinus
-    Ratio v(1,2);
-    std::cout << "sin : " << sinus_ratio(v) << std::endl;
+    Ratio sin_r(1,2);
+    std::cout << "sin : " << sinus_ratio(sin_r) << std::endl;
 
     //tangent
-    Ratio w(1,2);
-    std::cout << "tan : " << tan_ratio(w) << std::endl;
+    Ratio tan_r(1,2);
+    std::cout << "tan : " << tan_ratio(tan_r) << std::endl;
     
     //logarithm base e
-    Ratio x(3,2);
-    std::cout <<"logarithm (e) of x(3/2): " << logarithmE(x) <<std::endl;
+    Ratio log_r(3,2);
+    std::cout <<"logarithm (e) of x(3/2): " << logarithmE(log_r) <<std::endl;
 
     //logarithm base 10
-    Ratio y(100,1);
-    std::cout <<"logarithm (10) of x(100/1): " << logarithm10(y) <<std::endl;
+    Ratio log_r10(100,1);
+    std::cout <<"logarithm (10) of x(100/1): " << logarithm10(log_r10) <<std::endl;
 
     return 0;
 }

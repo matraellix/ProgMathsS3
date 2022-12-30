@@ -35,11 +35,11 @@ class Ratio {
     public:
 
     /// \brief default constructor
-    Ratio(): m_num(0), m_denom(1){}
+    constexpr Ratio(): m_num(0), m_denom(1){}
 
     /// \brief constructor from an integer
 	/// \param m_num : the value of the integer
-    Ratio(const int &num): m_num(num), m_denom(1){} 
+    constexpr  Ratio(const int &num): m_num(num), m_denom(1){} 
 
     /// \brief constructor from a specific fraction
 	/// \param m_num : the value of the numerator
@@ -48,8 +48,7 @@ class Ratio {
 
     /// \brief copy-constructor
 	/// \param v : the source rational to be copied
-    Ratio(const Ratio &r): m_num(r.m_num), m_denom(r.m_denom){}
-
+    constexpr Ratio(const Ratio &r): m_num(r.m_num), m_denom(r.m_denom){}
 
     /// \brief constructor from a real number
 	/// \param real : the value of the real number
@@ -57,6 +56,14 @@ class Ratio {
 
     /// \brief destructor
     ~Ratio() = default;
+
+    /// @brief rational form of infinit
+    /// @return Ratio of infinit
+    const Ratio infinit();
+
+    /// @brief rational form of 0
+    /// @return Ratio of 0
+    const Ratio zero();
 
     /// \brief arithmetic operators
 
@@ -171,14 +178,6 @@ class Ratio {
 
     /// @brief reduce the rational with gcd 
     void reduce_frac();
-
-    /// @brief rational form of infinit
-    /// @return Ratio of infinit
-    const Ratio infinit();
-
-    /// @brief rational form of 0
-    /// @return Ratio of 0
-    const Ratio zero();
 
     /// @brief display the rational
     /// @param stream 

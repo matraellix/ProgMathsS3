@@ -23,10 +23,13 @@ Ratio::Ratio(const double &real){
 }
 
 const Ratio Ratio::infinit(){
-    return (1,0);
+    Ratio r;
+    r.m_num = 1;
+    r.m_denom = 0;
+    return r;
 }
 const Ratio Ratio::zero(){
-    return (0,1);
+    return Ratio(0,1);
 }
 
 /*******GETTER***********/
@@ -45,6 +48,7 @@ int Ratio::set_num(int num){
 }
 
 int Ratio::set_denom(int denom){
+    assert( (denom != 0) && "error: division by zero not possible");
     m_denom = denom;
     return m_denom;
 }
