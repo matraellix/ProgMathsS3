@@ -117,9 +117,12 @@ class Ratio {
     Ratio & operator/=(const Ratio &r);
 
     /// \brief prefix increment and decrement operators
+    /// @return Ratio with new value   
     Ratio & operator++();
     Ratio & operator--();
     /// \brief postfix increment and decrement operators
+    /// @return Ratio with new value  
+    /// @param int  
     Ratio operator++(int);
     Ratio operator--(int);
     
@@ -159,7 +162,8 @@ class Ratio {
     /// @return int 
     int integer_part();
 
-
+    /// @brief convert a rational to a float
+    /// @return float
     float convert_ratio_to_float();
 
     /// @brief return positive denominator
