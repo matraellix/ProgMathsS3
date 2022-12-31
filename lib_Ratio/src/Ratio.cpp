@@ -13,7 +13,8 @@ Ratio::Ratio(const int &num, const int &denom){
     //gcd to reduce the ratio
     int gcd = std::gcd(num, denom);
     m_num = num/gcd;
-    m_denom = denom/gcd;  
+    m_denom = denom/gcd;
+    (*this).denom_positive();  
 }
 
 Ratio::Ratio(const double &real){
@@ -207,15 +208,21 @@ std::ostream& operator<< (std::ostream& stream, const Ratio& r){
 
 
 /*******ABSOLUTE***********/
-Ratio Ratio::abs() {
+Ratio Ratio::absolute() {
     if (m_num == 0){
         return zero();
     }
     if (m_denom == 0){
         return infinit();
     }
+    Ratio new_r;
+    new_r.m_num = abs(m_num);
+    new_r.m_denom = abs(m_denom);
+    return new_r;
+    /*
     (*this).denom_positive();
     return (m_num < 0) ? Ratio(-m_num, m_denom) : Ratio(m_num, m_denom);
+    */
 }
 
 /*******SQUARE ROOT***********/
@@ -246,7 +253,11 @@ Ratio power(const Ratio &r, const int n){
     if (n < 0) {
         throw std::out_of_range("Domain error: power negative");
     }
-    return (n==0) ? Ratio(1) : r * power(r, n-1);
+    Ratio new_r;
+    new_r.set_num(pow(r.get_num(), n)); 
+    new_r.set_denom(pow(r.get_denom(), n)); 
+    return new_r;
+    //return (n==0) ? Ratio(1) : r * power(r, n-1);
 }
 
 /*******EXPONENTIAL***********/

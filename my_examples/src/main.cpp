@@ -20,12 +20,12 @@ int main()
     std::cout << "r1 unary minus: " << r1 << std::endl;
 
     //absolute
-    Ratio r2(-2,-3);
+    Ratio r2(2,-3);
     std::cout << "r2 = "<< r2 << std::endl;
-    std::cout <<"abs : "<< r2.abs() << std::endl;
+    std::cout <<"abs : "<< r2.absolute() << std::endl;
     Ratio r3(-1.5);
     std::cout << "r3 = "<< r3 << std::endl;
-    std::cout << "r3.abs() = "<< r3.abs() << std::endl;
+    std::cout << "r3.abs() = "<< r3.absolute() << std::endl;
     
     //arithmetic operators
     //plus
@@ -84,13 +84,13 @@ int main()
 
 
     Ratio r8(1,2);
-    //test of operations with a float
+    //operations with a float
     std::cout << "r8 = " << r8 << std::endl;
     std::cout << "0.5 * r8 = " << 0.5*r8 << std::endl;
     std::cout << "r8 * 0.5 = " << r8*0.5 << std::endl;
     std::cout << "3 * r8 = " << 3*r8 << std::endl;
     std::cout << "r8 * 3 = " << r8*3 << std::endl;
-    std::cout << "0 * r8 = " << 0/r8 << std::endl;
+    std::cout << "0 / r8 = " << 0/r8 << std::endl;
     std::cout << "r8 / 2 = "<< r8/2 << std::endl;
     std::cout << "2 / r8 = "<< 2/r8 << std::endl;
     std::cout << "r8 + 2 = "<< r8+2 << std::endl;
@@ -138,12 +138,6 @@ int main()
     Ratio r11(9,1);
     Ratio r12(4,1);
     std::cout << r11 << " % "<< r12 << " : " << r11%r12 << std::endl;
-
-    //test for precision
-    double real = 0.00000025;
-    Ratio r_prec(real);
-    std::cout << "0.00000025 : " << r_prec << std::endl;
-    std::cout << real << " : " << std::setprecision(9) << real - (double)r_prec.convert_ratio_to_float() << std::endl;
 
     //trigonometry
     //cosinus

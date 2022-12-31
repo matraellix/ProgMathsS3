@@ -155,7 +155,7 @@ class Ratio {
 
     /// @brief return the absolute of a ratio
     /// @return Ratio in its absolute form 
-    Ratio abs();
+    Ratio absolute();
 
     /// @brief return the square root of a ratio
     /// @return Ratio  
