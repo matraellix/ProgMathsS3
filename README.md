@@ -42,9 +42,6 @@ make
 make
 ```
 
-## How to compile without CMAKE
-
-
 
 ## How to install google Test
 # Google Test
