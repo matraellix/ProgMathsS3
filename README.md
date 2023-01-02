@@ -29,13 +29,18 @@ example: ratio5(0.75);  (-> 3/4)
 
 ## How to compile CMAKE without visual studio code extensions
 -for the first time :
+```
 cd project_directory
 mkdir build
 cd build
 cmake ..
 make
+```
+
 -then : 
+```
 make
+```
 
 ## How to compile without CMAKE
 
